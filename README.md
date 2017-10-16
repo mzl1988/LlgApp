@@ -105,6 +105,10 @@ $ adb devices
     * ionic cordova resources --icon
     * ionic cordova resources --splash
 
+## 极光推送
+* https://github.com/jpush/jpush-phonegap-plugin
+* cordova plugin add jpush-phonegap-plugin --variable APP_KEY=your_jpush_appkey
+
 ## Ionic2/3 热更新
 1. http://ionicframework.com/docs/native/code-push/
 

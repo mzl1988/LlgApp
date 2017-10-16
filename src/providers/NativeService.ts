@@ -24,6 +24,22 @@ export class NativeService {
     }
 
     /**
+     * 是否android真机环境
+     * @return {boolean}
+     */
+    isAndroid(): boolean {
+        return this.isMobile() && this.platform.is('android');
+    }
+
+    /**
+     * 是否ios真机环境
+     * @return {boolean}
+     */
+    isIos(): boolean {
+        return this.isMobile() && (this.platform.is('ios') || this.platform.is('ipad') || this.platform.is('iphone'));
+    }
+
+    /**
      * code push
      */
     codePushReady() {

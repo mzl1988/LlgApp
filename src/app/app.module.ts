@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { NativeService } from "../providers/NativeService";
+import { JpushService } from "../providers/JpushService";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -44,6 +45,7 @@ import { CodePush } from '@ionic-native/code-push';
         SplashScreen,
         CodePush,
         NativeService,
+        JpushService,
         { provide: ErrorHandler, useClass: IonicErrorHandler }
     ]
 })

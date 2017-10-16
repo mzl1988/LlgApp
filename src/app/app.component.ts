@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { NativeService } from "../providers/NativeService";
+import { JpushService } from "../providers/JpushService";
 
 @Component({
     templateUrl: 'app.html'
@@ -17,13 +18,15 @@ export class MyApp {
         platform: Platform,
         statusBar: StatusBar,
         splashScreen: SplashScreen,
-        private nativeService: NativeService
+        nativeService: NativeService,
+        jpushService: JpushService
     ) {
         platform.ready().then(() => {
-            // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
-            // statusBar.styleDefault();
             splashScreen.hide();
+            // jpush
+            jpushService.initJpush();
+            jpushService.setTags(1988);
+            jpushService.setAlias(1988, `llg_app_user_1988`);
             // code push
             nativeService.codePushReady();
         });
