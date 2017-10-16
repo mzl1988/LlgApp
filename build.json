@@ -1,0 +1,11 @@
+{
+    "android": {
+        "release": {
+            "keystore": "LlgApp.keystore",
+            "storePassword": "123456",
+            "alias": "LlgApp",
+            "password": "123456",
+            "keystoreType": ""
+        }
+    }
+}

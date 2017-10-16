@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +12,171 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+// 在android中没0.4px, 以下是实现android中0.4px样式 start
+$tabbar-border-color: rgba(0, 0, 0, 0.3);
+$border-color: #c8c7cc;
+.platform-android {
+    .tabs-ios .tabbar {
+        border-top: 0;
+    }
+    .list-header-ios {
+        border-bottom: 0;
+    }
+    .list-ios .item-block .item-inner {
+        border-bottom: 0;
+    }
+    .list-ios>.item-block:last-child {
+        border-bottom: 0;
+    }
+    .action-sheet-ios .action-sheet-title {
+        border-bottom: 0;
+        position: relative;
+    }
+    .action-sheet-ios .action-sheet-button {
+        border-bottom: 0;
+        position: relative;
+    }
+    .list-ios>.item-block:first-child {
+        border-top: 0;
+    }
+    .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+        border-bottom: 0;
+    }
+    .alert-ios .alert-button {
+        position: relative;
+        border-top: 0;
+        border-right: 0;
+    }
+    .tabs-ios .tabbar:before {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 1px;
+        border-top: 1px solid $tabbar-border-color;
+        color: $tabbar-border-color;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+    }
+    .list-header-ios:after,
+    .action-sheet-ios .action-sheet-title:after,
+    .action-sheet-ios .action-sheet-button:after,
+    .header-ios .toolbar-ios:last-child .toolbar-background-ios:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid $border-color;
+        color: $border-color;
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+        z-index: 2;
+    }
+    .thumbnail-list .item-block .item-inner:after {
+        content: " ";
+        position: absolute;
+        left: 80px;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid $border-color;
+        color: $border-color;
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+        z-index: 2;
+    }
+    .avatar-list .item-block .item-inner:after {
+        content: " ";
+        position: absolute;
+        left: 60px;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid $border-color;
+        color: $border-color;
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+        z-index: 2;
+    }
+    .icon-list .item-block .item-inner:after {
+        content: " ";
+        position: absolute;
+        left: 50px;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid $border-color;
+        color: $border-color;
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+        z-index: 2;
+    }
+    .list-ios>.item-block:last-child:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid $border-color;
+        color: $border-color;
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+        z-index: 2;
+    }
+    .list-ios>.item-block:first-child:before {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 1px;
+        border-top: 1px solid $border-color;
+        color: $border-color;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+    }
+    .list-ios .item-block:last-child .item-inner:after {
+        display: none;
+    }
+    .alert-ios .alert-button:after {
+        content: " ";
+        width: 1000%;
+        height: 1000%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-top: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        box-sizing: border-box;
+    }
+    .alert-ios .alert-button:last-child:after {
+        border-right: 0;
+        border-left: 1px solid $border-color;
+    }
+}
+
+// 在android中没0.4px, 以下是实现android中0.4px样式 end
