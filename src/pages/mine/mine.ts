@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController } from 'ionic-angular';
+import { IonicPage, ModalController, AlertController } from 'ionic-angular';
 import { LoginPage } from "../login/login";
 
 @IonicPage()
@@ -9,7 +9,10 @@ import { LoginPage } from "../login/login";
 })
 export class MinePage {
 
-    constructor(public modalCtrl: ModalController) {
+    constructor(
+        public modalCtrl: ModalController,
+        private alertCtrl: AlertController
+    ) {
     }
 
 
@@ -18,8 +21,19 @@ export class MinePage {
     }
 
     logOut() {
-        let modal = this.modalCtrl.create(LoginPage);
-        modal.present();
+        this.alertCtrl.create({
+            title: '确认退出登陆？',
+            buttons: [
+                { text: '取消' },
+                {
+                    text: '确定',
+                    handler: () => {
+                        let modal = this.modalCtrl.create(LoginPage);
+                        modal.present();
+                    }
+                }
+            ]
+        }).present();
     }
 
 }

@@ -4,7 +4,7 @@ import { MinePage } from './mine';
 
 @NgModule({
     declarations: [
-        MinePage,
+        MinePage
     ],
     imports: [
         IonicPageModule.forChild(MinePage),
