@@ -3,23 +3,23 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { TabsPage } from '../pages/tabs/tabs';
-
 import { NativeService } from "../providers/NativeService";
 import { JpushService } from "../providers/JpushService";
+import { BackButtonService } from "../providers/BackButtonService";
 
 @Component({
     templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage: any = TabsPage;
+    rootPage:any = 'LoginPage';
 
     constructor(
         platform: Platform,
         statusBar: StatusBar,
         splashScreen: SplashScreen,
         nativeService: NativeService,
-        jpushService: JpushService
+        jpushService: JpushService,
+        backButtonService: BackButtonService
     ) {
         platform.ready().then(() => {
             splashScreen.hide();

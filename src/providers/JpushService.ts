@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NativeService } from "./NativeService";
+import { ENV } from "./Constants";
 
 /**
  * JpushService类存放和极光推送业务有关的公共方法
@@ -18,7 +19,10 @@ export class JpushService {
 			return;
 		}
 		window['plugins'].jPushPlugin.init();
-		if (this.nativeService.isMobile()) {
+		if (this.nativeService.isIos() && ENV !== 'prod') {
+			window['plugins'].jPushPlugin.setDebugModeFromIos();
+		}
+		if (this.nativeService.isAndroid() && ENV !== 'prod') {
 			window['plugins'].jPushPlugin.setDebugMode(false);
 		}
 

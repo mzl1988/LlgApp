@@ -63,6 +63,22 @@ $border-color: #c8c7cc;
         -webkit-transform: scaleY(0.4);
         transform: scaleY(0.4);
     }
+
+    .list-ios .item-block .item-inner:after {
+        content: " ";
+        position: absolute;
+        left: 16px;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid $border-color;
+        color: $border-color;
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+        z-index: 2;
+    }
     .list-header-ios:after,
     .action-sheet-ios .action-sheet-title:after,
     .action-sheet-ios .action-sheet-button:after,

@@ -13,28 +13,11 @@ gulp.task('css', function () {
 // //压缩js  
 gulp.task("js", function () {
   var rootdir = process.argv[2];
-  return gulp.src([rootdir + '/www/build/main.js',
-      rootdir + '/www/build/vendor.js',
-      rootdir + '/www/build/polyfills.js'
+  return gulp.src([rootdir + '/www/build/*.js',
     ])
-    // .pipe(concat('main.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest(rootdir + '/www/build/'));
-});
-// 修改 index.html
-var cheerio = require('gulp-cheerio');
-gulp.task('indexHtml', function() {
-    var rootdir = process.argv[2];
-    return gulp.src(rootdir + '/www/index.html')
-        .pipe(cheerio(function ($) {
-            // $('script').remove();
-            // $('link').remove();
-            // $('body').append('<script src="build/main.min.js"></script>');
-            // $('head').append('<script src="cordova.js"></script>');
-        }))
-        .pipe(gulp.dest(rootdir + '/www/'));
 });
 
 gulp.start('css');
 gulp.start('js');
-// gulp.start('indexHtml');
