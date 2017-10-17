@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController } from 'ionic-angular';
-import { TabsPage } from "../tabs/tabs";
+import { TabsPage } from '../tabs/tabs';
 import { Platform } from 'ionic-angular';
-import { BackButtonService } from "../../providers/BackButtonService";
+import { BackButtonService } from '../../providers/BackButtonService';
 import { Toast } from '@ionic-native/toast';
 import { Storage } from '@ionic/storage';
 
@@ -30,12 +30,12 @@ export class LoginPage {
     }
 
     logIn(username: HTMLInputElement, password: HTMLInputElement) {
-        if (username.value.length == 0) {
+        if (username.value.length === 0) {
             this.toast.show(`请输入账号`, '2000', 'center').subscribe(
                 toast => {
                 }
             );
-        } else if (password.value.length == 0) {
+        } else if (password.value.length === 0) {
             this.toast.show(`请输入密码`, '2000', 'center').subscribe(
                 toast => {
                 }

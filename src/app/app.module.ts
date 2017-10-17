@@ -5,9 +5,9 @@ import { MyApp } from './app.component';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
-import { NativeService } from "../providers/NativeService";
-import { JpushService } from "../providers/JpushService";
-import { BackButtonService } from "../providers/BackButtonService";
+import { NativeService } from '../providers/NativeService';
+import { JpushService } from '../providers/JpushService';
+import { BackButtonService } from '../providers/BackButtonService';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController, AlertController, NavController } from 'ionic-angular';
-import { LoginPage } from "../login/login";
+import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
 
 @IonicPage()
@@ -23,7 +23,7 @@ export class MinePage {
     }
 
     toSettingsPage() {
-		this.navCtrl.push('SettingsPage');
+        this.navCtrl.push('SettingsPage');
     }
     toAboutPage() {
         this.navCtrl.push('AboutPage');

@@ -6,9 +6,9 @@ import { Storage } from '@ionic/storage';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
-import { NativeService } from "../providers/NativeService";
-import { JpushService } from "../providers/JpushService";
-import { BackButtonService } from "../providers/BackButtonService";
+import { NativeService } from '../providers/NativeService';
+import { JpushService } from '../providers/JpushService';
+import { BackButtonService } from '../providers/BackButtonService';
 
 @Component({
     templateUrl: 'app.html'

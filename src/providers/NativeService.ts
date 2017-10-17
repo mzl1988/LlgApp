@@ -43,7 +43,7 @@ export class NativeService {
      * code push
      */
     codePushReady() {
-        if(!this.isMobile()) {
+        if (!this.isMobile()) {
             return;
         }
         this.codePush.sync().subscribe((syncStatus) => {
