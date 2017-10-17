@@ -12,6 +12,7 @@ import { BackButtonService } from "../providers/BackButtonService";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CodePush } from '@ionic-native/code-push';
+import { Toast } from '@ionic-native/toast';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { CodePush } from '@ionic-native/code-push';
         NativeService,
         JpushService,
         BackButtonService,
+        Toast,
         { provide: ErrorHandler, useClass: IonicErrorHandler }
     ]
 })

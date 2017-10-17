@@ -3,6 +3,7 @@ import { IonicPage, ModalController } from 'ionic-angular';
 import { TabsPage } from "../tabs/tabs";
 import { Platform } from 'ionic-angular';
 import { BackButtonService } from "../../providers/BackButtonService";
+import { Toast } from '@ionic-native/toast';
 
 @IonicPage()
 @Component({
@@ -14,7 +15,9 @@ export class LoginPage {
     constructor(
         public modalCtrl: ModalController,
         backButtonService: BackButtonService,
-        platform: Platform) {
+        platform: Platform,
+        private toast: Toast
+    ) {
         platform.ready().then(() => {
             backButtonService.registerBackButtonAction(null);
         });
@@ -26,12 +29,16 @@ export class LoginPage {
 
     logIn(username: HTMLInputElement, password: HTMLInputElement) {
         if (username.value.length == 0) {
-            alert("请输入账号");
+            this.toast.show(`请输入账号`, '2000', 'center').subscribe(
+                toast => {
+                }
+            );
         } else if (password.value.length == 0) {
-            alert("请输入密码");
+            this.toast.show(`请输入密码`, '2000', 'center').subscribe(
+                toast => {
+                }
+            );
         } else {
-            let userInfo: string = '用户名：' + username.value + '密码：' + password.value;
-            alert(userInfo);
             let modal = this.modalCtrl.create(TabsPage);
             modal.present();
         }

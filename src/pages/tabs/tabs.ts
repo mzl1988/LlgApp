@@ -29,7 +29,7 @@ export class TabsPage {
             {
                 root: 'MinePage',
                 tabTitle: '我的',
-                tabIcon: 'contacts'
+                tabIcon: 'person'
             }
         ];
         platform.ready().then(() => {

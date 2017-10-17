@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Platform, ToastController, App, NavController, Tabs } from 'ionic-angular';
+import { Platform, App, NavController, Tabs } from 'ionic-angular';
+import { Toast } from '@ionic-native/toast';
 
 @Injectable()
 export class BackButtonService {
@@ -10,7 +11,8 @@ export class BackButtonService {
     //构造函数 依赖注入
     constructor(public platform: Platform,
         public appCtrl: App,
-        public toastCtrl: ToastController) { }
+        private toast: Toast
+    ) { }
 
     //注册方法
     registerBackButtonAction(tabRef: Tabs): void {
@@ -41,11 +43,22 @@ export class BackButtonService {
             this.platform.exitApp();
         } else {
             //第一次按，弹出Toast
-            this.toastCtrl.create({
-                message: '再按一次退出应用',
-                duration: 2000,
-                position: 'top'
-            }).present();
+            this.toast.showWithOptions(
+                {
+                    message: '再按一次退出应用',
+                    duration: 2000,
+                    position: 'bottom',
+                    styling: {
+                        opacity: 1.0,
+                        backgroundColor: '#488aff',
+                        textColor: '#FFFFFF'
+                    }
+                }
+            ).subscribe(
+                toast => {
+                }
+                );
+
             //标记为true
             this.backButtonPressed = true;
             //两秒后标记为false，如果退出的话，就不会执行了
