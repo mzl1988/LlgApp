@@ -13,6 +13,16 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+@for $size from 0 through 20 {
+    @each $position in top,
+    left,
+    right,
+    bottom {
+        .margin-#{$position}-#{$size} {
+            margin-#{$position}: 1px * $size;
+        }
+    }
+}
 
 // 在android中没0.4px, 以下是实现android中0.4px样式 start
 $tabbar-border-color: rgba(0, 0, 0, 0.3);

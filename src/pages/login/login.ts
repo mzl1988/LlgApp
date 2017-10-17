@@ -4,6 +4,7 @@ import { TabsPage } from "../tabs/tabs";
 import { Platform } from 'ionic-angular';
 import { BackButtonService } from "../../providers/BackButtonService";
 import { Toast } from '@ionic-native/toast';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -16,7 +17,8 @@ export class LoginPage {
         public modalCtrl: ModalController,
         backButtonService: BackButtonService,
         platform: Platform,
-        private toast: Toast
+        private toast: Toast,
+        private storage: Storage
     ) {
         platform.ready().then(() => {
             backButtonService.registerBackButtonAction(null);
@@ -39,6 +41,7 @@ export class LoginPage {
                 }
             );
         } else {
+            this.storage.set('token', '123456');
             let modal = this.modalCtrl.create(TabsPage);
             modal.present();
         }

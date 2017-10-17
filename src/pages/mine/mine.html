@@ -6,7 +6,31 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="outer-content">
+    <ion-list class="margin-bottom-10">
+        <ion-item>
+            <ion-thumbnail item-start>
+                <img src="assets/images/user.jpg" class="user-pic">
+            </ion-thumbnail>
+            <h2>李蘭國</h2>
+            <p>人生很搞，夢想不老。</p>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <a ion-item href='tel:13726268701'>
+            <ion-icon name="call" color="primary" item-start></ion-icon>手机号
+            <ion-note item-end>
+                13726268701
+            </ion-note>
+        </a>
+        <button ion-item (click)="toSettingsPage()">
+            <ion-icon name="settings" color="primary" item-start></ion-icon>设置
+        </button>
+        <button ion-item (click)="toAboutPage()">
+            <ion-icon name="alert" color="primary" item-start></ion-icon>关于
+        </button>
+    </ion-list>
     <div padding>
         <button ion-button block (click)="logOut()">
             退出登录

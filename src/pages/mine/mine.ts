@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, AlertController } from 'ionic-angular';
+import { IonicPage, ModalController, AlertController, NavController } from 'ionic-angular';
 import { LoginPage } from "../login/login";
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -11,13 +12,21 @@ export class MinePage {
 
     constructor(
         public modalCtrl: ModalController,
-        private alertCtrl: AlertController
+        private alertCtrl: AlertController,
+        private storage: Storage,
+        private navCtrl: NavController
     ) {
     }
 
-
     ionViewDidLoad() {
         console.log('ionViewDidLoad SettingPage');
+    }
+
+    toSettingsPage() {
+		this.navCtrl.push('SettingsPage');
+    }
+    toAboutPage() {
+        this.navCtrl.push('AboutPage');
     }
 
     logOut() {
@@ -28,6 +37,7 @@ export class MinePage {
                 {
                     text: '确定',
                     handler: () => {
+                        this.storage.remove('token');
                         let modal = this.modalCtrl.create(LoginPage);
                         modal.present();
                     }
