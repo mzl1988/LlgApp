@@ -1,9 +1,13 @@
 {
-  "name": "LlgApp",
-  "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {
-    "cordova": {},
-    "gulp": {}
-  }
+    "name": "LlgApp",
+    "app_id": "",
+    "type": "ionic-angular",
+    "integrations": {
+        "cordova": {},
+        "gulp": {}
+    },
+    "proxies": [{
+        "path": "/api",
+        "proxyUrl": "http://XXX.api.com/api"
+    }]
 }

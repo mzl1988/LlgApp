@@ -1,6 +1,8 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Platform, AlertController } from 'ionic-angular';
 import { CodePush, SyncStatus } from '@ionic-native/code-push';
+import { Network } from '@ionic-native/network';
+import { AppVersion } from '@ionic-native/app-version';
 
 @Injectable()
 export class NativeService {
@@ -11,8 +13,47 @@ export class NativeService {
         private platform: Platform,
         private alertCtrl: AlertController,
         private codePush: CodePush,
-        private ngZone: NgZone
+        private ngZone: NgZone,
+        private network: Network,
+        private appVersion: AppVersion
     ) {
+    }
+
+    warn(info): void {
+        console.log('%cNativeService/' + info, 'color:#e8c406');
+    }
+
+    /**
+   * 获得app版本号,如0.01
+   * @description  对应/config.xml中version的值
+   * @returns {Promise<string>}
+   */
+    getVersionNumber(): Promise<string> {
+        return new Promise((resolve) => {
+            this.appVersion.getVersionNumber().then((value: string) => {
+                resolve(value);
+            }).catch(err => {
+                this.warn('getVersionNumber:' + err);
+            });
+        });
+    }
+
+    /**
+   * 获取网络类型 如`unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
+   */
+    getNetworkType(): string {
+        if (!this.isMobile()) {
+            return 'wifi';
+        }
+        return this.network.type;
+    }
+
+    /**
+     * 判断是否有网络
+     * @returns {boolean}
+     */
+    isConnecting(): boolean {
+        return this.getNetworkType() != 'none';
     }
 
     /**

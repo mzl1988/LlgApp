@@ -3,6 +3,7 @@ import { Platform, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
+import { Toast } from '@ionic-native/toast';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -20,11 +21,12 @@ export class MyApp {
         platform: Platform,
         statusBar: StatusBar,
         splashScreen: SplashScreen,
-        nativeService: NativeService,
+        private nativeService: NativeService,
         jpushService: JpushService,
         backButtonService: BackButtonService,
         storage: Storage,
-        loadingCtrl: LoadingController
+        loadingCtrl: LoadingController,
+        private toast: Toast
     ) {
         platform.ready().then(() => {
             splashScreen.hide();
@@ -42,10 +44,32 @@ export class MyApp {
                     jpushService.initJpush();
                     jpushService.setTags(1988);
                     jpushService.setAlias(1988, `llg_app_user_1988`);
+                    // 检测网络
+                    this.checkNetwork();
                 }
             });
             // code push
             nativeService.codePushReady();
         });
+    }
+
+    checkNetwork() {
+        if (!this.nativeService.isConnecting()) {
+            this.toast.showWithOptions(
+                {
+                    message: '未检测到网络,请连接网络',
+                    duration: 2000,
+                    position: 'top',
+                    styling: {
+                        opacity: 1.0,
+                        backgroundColor: '#f53d3d',
+                        textColor: '#FFFFFF'
+                    }
+                }
+            ).subscribe(
+                toast => {
+                }
+                );
+        }
     }
 }

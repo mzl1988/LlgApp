@@ -14,6 +14,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { CodePush } from '@ionic-native/code-push';
 import { Toast } from '@ionic-native/toast';
 import { IonicStorageModule } from '@ionic/storage';
+import { Network } from '@ionic-native/network';
+import { AppVersion } from '@ionic-native/app-version';
 
 @NgModule({
     declarations: [
@@ -43,6 +45,8 @@ import { IonicStorageModule } from '@ionic/storage';
         JpushService,
         BackButtonService,
         Toast,
+        Network,
+        AppVersion,
         { provide: ErrorHandler, useClass: IonicErrorHandler }
     ]
 })
