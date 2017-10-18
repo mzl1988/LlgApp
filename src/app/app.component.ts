@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { Platform, LoadingController } from 'ionic-angular';
+import { Platform, LoadingController, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { Toast } from '@ionic-native/toast';
-
-import { TabsPage } from '../pages/tabs/tabs';
 
 import { NativeService } from '../providers/NativeService';
 import { JpushService } from '../providers/JpushService';
@@ -15,8 +13,8 @@ import { BackButtonService } from '../providers/BackButtonService';
     templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage: any = 'LoginPage';
-
+    rootPage = 'LoginPage';
+    
     constructor(
         platform: Platform,
         statusBar: StatusBar,
@@ -26,7 +24,8 @@ export class MyApp {
         backButtonService: BackButtonService,
         storage: Storage,
         loadingCtrl: LoadingController,
-        private toast: Toast
+        private toast: Toast,
+        private modalCtrl: ModalController
     ) {
         platform.ready().then(() => {
             splashScreen.hide();
@@ -37,7 +36,8 @@ export class MyApp {
                         duration: 2000
                     });
                     loading.onDidDismiss(() => {
-                        this.rootPage = TabsPage;
+                        let modal = this.modalCtrl.create('TabsPage');
+                        modal.present();
                     });
                     loading.present();
                     // jpush

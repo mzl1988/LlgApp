@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Tabs } from 'ionic-angular';
+import { Platform, IonicPage, Tabs } from 'ionic-angular';
 
 import { BackButtonService } from '../../providers/BackButtonService';
 
+@IonicPage()
 @Component({
     templateUrl: 'tabs.html'
 })

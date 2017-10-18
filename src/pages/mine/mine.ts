@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController, AlertController, NavController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
 
 @IonicPage()
@@ -11,7 +10,7 @@ import { Storage } from '@ionic/storage';
 export class MinePage {
 
     constructor(
-        public modalCtrl: ModalController,
+        private modalCtrl: ModalController,
         private alertCtrl: AlertController,
         private storage: Storage,
         private navCtrl: NavController
@@ -38,7 +37,7 @@ export class MinePage {
                     text: '确定',
                     handler: () => {
                         this.storage.remove('token');
-                        let modal = this.modalCtrl.create(LoginPage);
+                        let modal = this.modalCtrl.create('LoginPage');
                         modal.present();
                     }
                 }

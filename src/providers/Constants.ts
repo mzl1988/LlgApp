@@ -3,4 +3,4 @@
  * @description
  */
 export const ENV = 'prod';
-export const APP_SERVE_URL = 'http://xxx.xxx.xxx/api';
+export const APP_SERVE_URL = 'http://localhost:8000/api';

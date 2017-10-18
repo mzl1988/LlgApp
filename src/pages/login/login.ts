@@ -1,24 +1,30 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
 import { Platform } from 'ionic-angular';
 import { BackButtonService } from '../../providers/BackButtonService';
 import { Toast } from '@ionic-native/toast';
 import { Storage } from '@ionic/storage';
 
+import { User } from "../../models";
+import { UserService } from "../../services";
+import 'rxjs/add/operator/finally';
+
 @IonicPage()
 @Component({
     selector: 'page-login',
     templateUrl: 'login.html',
+    providers: [UserService]
 })
 export class LoginPage {
+    user = new User();
 
     constructor(
         public modalCtrl: ModalController,
         backButtonService: BackButtonService,
         platform: Platform,
         private toast: Toast,
-        private storage: Storage
+        private storage: Storage,
+        private userService: UserService,
     ) {
         platform.ready().then(() => {
             backButtonService.registerBackButtonAction(null);
@@ -42,8 +48,23 @@ export class LoginPage {
             );
         } else {
             this.storage.set('token', '123456');
-            let modal = this.modalCtrl.create(TabsPage);
+            let modal = this.modalCtrl.create('TabsPage');
             modal.present();
+
+            // this.user.username = username.value;
+            // this.user.password = password.value;
+            // this.userService.authLogin(this.user)
+            //     .finally(() => {
+
+            //     })
+            //     .subscribe(data => {
+            //         // this.storage.set('token', '123456');
+            //         // let modal = this.modalCtrl.create(TabsPage);
+            //         // modal.present();
+            //     },
+            //     error => {
+
+            //     });
         }
     }
 

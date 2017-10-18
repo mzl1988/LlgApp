@@ -3,13 +3,12 @@ import { IonicPage } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+    selector: 'page-home',
+    templateUrl: 'home.html'
 })
 export class HomePage {
 
-  constructor() {
-
-  }
+    constructor() {
+    }
 
 }
