@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 
-@IonicPage()
+@IonicPage({
+    priority: 'low'
+})
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+    selector: 'page-about',
+    templateUrl: 'about.html'
 })
 export class AboutPage {
 
-  constructor() {
+    constructor() {
 
-  }
+    }
 
 }

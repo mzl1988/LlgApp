@@ -27,7 +27,8 @@ import { AppVersion } from '@ionic-native/app-version';
         IonicModule.forRoot(MyApp,
             {
                 mode: 'ios',
-                backButtonText: ''
+                backButtonText: '',
+                preloadModules: true // 启用预加载
             }
         ),
         IonicStorageModule.forRoot()

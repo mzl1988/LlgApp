@@ -3,7 +3,9 @@ import { Platform, IonicPage, Tabs } from 'ionic-angular';
 
 import { BackButtonService } from '../../providers/BackButtonService';
 
-@IonicPage()
+@IonicPage({
+    priority: 'high'
+})
 @Component({
     templateUrl: 'tabs.html'
 })

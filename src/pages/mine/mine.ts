@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { IonicPage, ModalController, AlertController, NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-@IonicPage()
+@IonicPage({
+    priority: 'low',
+    name: 'MinePage',
+    segment: 'tabs/mine'
+})
 @Component({
     selector: 'page-mine',
     templateUrl: 'mine.html'
@@ -22,7 +26,9 @@ export class MinePage {
     }
 
     toSettingsPage() {
-        this.navCtrl.push('SettingsPage');
+        this.navCtrl.push('SettingsPage', {
+            'id': 1
+        });
     }
     toAboutPage() {
         this.navCtrl.push('AboutPage');

@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-@IonicPage()
+@IonicPage({
+    priority: 'off',
+    name: 'SettingsPage',
+    segment: 'settings/:id'
+})
 @Component({
     selector: 'page-settings',
     templateUrl: 'settings.html'
@@ -10,8 +14,11 @@ import { Storage } from '@ionic/storage';
 export class SettingsPage {
 
     constructor(
+        navParams: NavParams,
         private storage: Storage
     ) {
+        console.log(navParams);
+        
     }
 
     ionViewDidLoad() {

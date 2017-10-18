@@ -9,7 +9,11 @@ import { User } from "../../models";
 import { UserService } from "../../services";
 import 'rxjs/add/operator/finally';
 
-@IonicPage()
+@IonicPage({
+    priority: 'high',
+    name: 'LoginPage',
+    segment: 'login'
+})
 @Component({
     selector: 'page-login',
     templateUrl: 'login.html',
