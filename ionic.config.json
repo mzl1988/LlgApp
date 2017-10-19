@@ -6,8 +6,10 @@
         "cordova": {},
         "gulp": {}
     },
-    "proxies": [{
-        "path": "/api",
-        "proxyUrl": "http://XXX.api.com/api"
-    }]
+    "proxies": [
+        {
+            "path": "/v2",
+            "proxyUrl": "https://api.douban.com/v2"
+        }
+    ]
 }
