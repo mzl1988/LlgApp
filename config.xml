@@ -31,7 +31,7 @@
     </feature>
     <platform name="android">
         <allow-intent href="market:*" />
-        <preference name="CodePushDeploymentKey" value="8X9G0C8suU36CuIl7jfeKATVycVp039a3559-0553-4add-a12f-928981e845e8" />
+        <preference name="CodePushDeploymentKey" value="YOUR-ANDROID-DEPLOYMENT-KEY" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />

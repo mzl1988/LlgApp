@@ -3,6 +3,7 @@ import { Platform, AlertController } from 'ionic-angular';
 import { CodePush, SyncStatus } from '@ionic-native/code-push';
 import { Network } from '@ionic-native/network';
 import { AppVersion } from '@ionic-native/app-version';
+import { CODE_PUSH_DEPLOYMENT_KEY, ENV } from "./Constants";
 
 @Injectable()
 export class NativeService {
@@ -87,7 +88,22 @@ export class NativeService {
         if (!this.isMobile()) {
             return;
         }
-        this.codePush.sync().subscribe((syncStatus) => {
+        let deploymentKey = '';
+        if (this.isAndroid() && ENV !== 'prod') {
+            deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.android.Staging;
+        }
+        if (this.isAndroid() && ENV === 'prod') {
+            deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.android.Production;
+        }
+        if (this.isIos() && ENV !== 'prod') {
+            deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.ios.Staging;
+        }
+        if (this.isIos() && ENV === 'prod') {
+            deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.ios.Production;
+        }
+        this.codePush.sync({
+            deploymentKey: deploymentKey
+        }).subscribe((syncStatus) => {
 
             if (syncStatus === SyncStatus.UP_TO_DATE) {
 

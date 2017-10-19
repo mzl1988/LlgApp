@@ -17,7 +17,9 @@ export class BackButtonService {
 
     // 注册方法
     registerBackButtonAction(tabRef: Tabs): void {
-
+        if (this.platform.is('ios')) {
+            return;
+        }
         // registerBackButtonAction是系统自带的方法
         this.platform.registerBackButtonAction(() => {
             if (this.keyboard.isOpen()) {

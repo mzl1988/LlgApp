@@ -53,14 +53,14 @@ $ code-push release-cordova LlgApp-Android android --deploymentName Production -
 
 ## 常用命令
 
-### 1. 查看部署信息
+### 1. 查看部署信息
 ```
 $ code-push deployment ls LlgApp-iOS -k
 $ code-push deployment ls LlgApp-Android -k
 
 ```
 
-### 1. 查看部署历史记录
+### 1. 查看部署历史记录
 ```
 $ code-push deployment history LlgApp-iOS Production
 $ code-push deployment history LlgApp-Android Production

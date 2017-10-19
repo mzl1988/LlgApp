@@ -71,6 +71,7 @@ export class MyApp {
             this.storage.remove('token');
             this.loginModal = this.modalCtrl.create('LoginPage');
             this.loginModal.present();
+            this.rootPage = 'TabsPage';
         });
     }
 
