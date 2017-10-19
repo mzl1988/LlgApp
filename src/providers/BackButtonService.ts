@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Platform, App, NavController, Tabs } from 'ionic-angular';
+import { Platform, App, NavController, Tabs, Keyboard } from 'ionic-angular';
 import { Toast } from '@ionic-native/toast';
 
 @Injectable()
@@ -10,8 +10,9 @@ export class BackButtonService {
 
     // 构造函数 依赖注入
     constructor(public platform: Platform,
-        public appCtrl: App,
-        private toast: Toast
+        private appCtrl: App,
+        private toast: Toast,
+        private keyboard: Keyboard
     ) { }
 
     // 注册方法
@@ -19,6 +20,11 @@ export class BackButtonService {
 
         // registerBackButtonAction是系统自带的方法
         this.platform.registerBackButtonAction(() => {
+            if (this.keyboard.isOpen()) {
+                //按下返回键时，先关闭键盘
+                this.keyboard.close();
+                return;
+            };
             // 获取NavController
             let activeNav: NavController = this.appCtrl.getActiveNav();
             // 如果可以返回上一页，则执行pop

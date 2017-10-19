@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController } from 'ionic-angular';
-import { Platform } from 'ionic-angular';
+import { Platform, IonicPage, Events, ViewController } from 'ionic-angular';
 import { BackButtonService } from '../../providers/BackButtonService';
 import { Toast } from '@ionic-native/toast';
 import { Storage } from '@ionic/storage';
@@ -23,15 +22,19 @@ export class LoginPage {
     user = new User();
 
     constructor(
-        public modalCtrl: ModalController,
         backButtonService: BackButtonService,
         platform: Platform,
         private toast: Toast,
         private storage: Storage,
         private userService: UserService,
+        private events: Events,
+        private viewCtrl: ViewController
     ) {
         platform.ready().then(() => {
             backButtonService.registerBackButtonAction(null);
+            this.events.subscribe('loginModal:dismiss', (str) => {
+                viewCtrl.dismiss();
+            });
         });
     }
 
@@ -52,8 +55,10 @@ export class LoginPage {
             );
         } else {
             this.storage.set('token', '123456');
-            let modal = this.modalCtrl.create('TabsPage');
-            modal.present();
+            this.viewCtrl.dismiss();
+            this.events.publish('user:login', 'login');
+            // let modal = this.modalCtrl.create('TabsPage');
+            // modal.present();
 
             // this.user.username = username.value;
             // this.user.password = password.value;

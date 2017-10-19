@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, AlertController, NavController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { IonicPage, ModalController, AlertController, NavController, Events } from 'ionic-angular';
 
 @IonicPage({
     priority: 'low',
@@ -16,8 +15,8 @@ export class MinePage {
     constructor(
         private modalCtrl: ModalController,
         private alertCtrl: AlertController,
-        private storage: Storage,
-        private navCtrl: NavController
+        private navCtrl: NavController,
+        private events: Events
     ) {
     }
 
@@ -42,9 +41,7 @@ export class MinePage {
                 {
                     text: '确定',
                     handler: () => {
-                        this.storage.remove('token');
-                        let modal = this.modalCtrl.create('LoginPage');
-                        modal.present();
+                        this.events.publish('user:logout', 'logout');
                     }
                 }
             ]

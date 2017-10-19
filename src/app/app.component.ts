@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, LoadingController, ModalController } from 'ionic-angular';
+import { Platform, LoadingController, ModalController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
@@ -13,43 +13,64 @@ import { BackButtonService } from '../providers/BackButtonService';
     templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage = 'LoginPage';
-    
+    rootPage: any;
+    loginModal: any;
+
     constructor(
         platform: Platform,
         statusBar: StatusBar,
         splashScreen: SplashScreen,
         private nativeService: NativeService,
-        jpushService: JpushService,
+        private jpushService: JpushService,
         backButtonService: BackButtonService,
-        storage: Storage,
+        private storage: Storage,
         loadingCtrl: LoadingController,
         private toast: Toast,
-        private modalCtrl: ModalController
+        private modalCtrl: ModalController,
+        private events: Events
     ) {
         platform.ready().then(() => {
             splashScreen.hide();
+            this.loginModal = this.modalCtrl.create('LoginPage');
+            this.loginModal.present();
             storage.get('token').then((token) => {
                 if (token) {
                     let loading = loadingCtrl.create({
                         content: '自动登陆中...',
-                        duration: 2000
+                        duration: 1500
                     });
                     loading.onDidDismiss(() => {
-                        let modal = this.modalCtrl.create('TabsPage');
-                        modal.present();
+                        this.rootPage = 'TabsPage';
+                        this.events.publish('loginModal:dismiss', 'login');
                     });
                     loading.present();
                     // jpush
-                    jpushService.initJpush();
-                    jpushService.setTags(1988);
-                    jpushService.setAlias(1988, `llg_app_user_1988`);
+                    this.initJpush();
                     // 检测网络
                     this.checkNetwork();
                 }
             });
             // code push
             nativeService.codePushReady();
+            this.listenToLoginEvents();
+        });
+    }
+
+    initJpush() {
+        this.jpushService.initJpush();
+        this.jpushService.setTags(1988);
+        this.jpushService.setAlias(1988, `llg_app_user_1988`);
+    }
+
+    listenToLoginEvents() {
+        this.events.subscribe('user:login', (str) => {
+            this.rootPage = 'TabsPage';
+            this.initJpush();
+        });
+        this.events.subscribe('user:logout', (str) => {
+            this.storage.remove('token');
+            this.loginModal = this.modalCtrl.create('LoginPage');
+            this.loginModal.present();
         });
     }
 
