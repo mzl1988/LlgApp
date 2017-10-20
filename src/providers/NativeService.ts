@@ -1,9 +1,10 @@
 import { Injectable, NgZone } from '@angular/core';
-import { Platform, AlertController } from 'ionic-angular';
+import { Platform, AlertController, ToastController } from 'ionic-angular';
 import { CodePush, SyncStatus } from '@ionic-native/code-push';
 import { Network } from '@ionic-native/network';
 import { AppVersion } from '@ionic-native/app-version';
 import { CODE_PUSH_DEPLOYMENT_KEY, ENV } from "./Constants";
+import { Toast, ToastOptions } from '@ionic-native/toast';
 
 @Injectable()
 export class NativeService {
@@ -12,6 +13,8 @@ export class NativeService {
 
     constructor(
         private platform: Platform,
+        private toast: Toast,
+        private toastCtrl: ToastController,
         private alertCtrl: AlertController,
         private codePush: CodePush,
         private ngZone: NgZone,
@@ -157,5 +160,23 @@ export class NativeService {
             }
 
         });
+    }
+
+    toastShowWithOptions(options: ToastOptions) {
+        if (this.isMobile()) {
+            this.toast.showWithOptions(options).subscribe(
+                toast => {
+                }
+            );
+        } else {
+            let toast = this.toastCtrl.create({
+                message: options.message,
+                duration: options.duration,
+                position: options.position
+            });
+
+            toast.present();
+        }
+
     }
 }

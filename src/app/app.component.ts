@@ -3,7 +3,6 @@ import { Platform, LoadingController, ModalController, Events } from 'ionic-angu
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-import { Toast } from '@ionic-native/toast';
 
 import { NativeService } from '../providers/NativeService';
 import { JpushService } from '../providers/JpushService';
@@ -25,7 +24,6 @@ export class MyApp {
         backButtonService: BackButtonService,
         private storage: Storage,
         loadingCtrl: LoadingController,
-        private toast: Toast,
         private modalCtrl: ModalController,
         private events: Events
     ) {
@@ -77,21 +75,16 @@ export class MyApp {
 
     checkNetwork() {
         if (!this.nativeService.isConnecting()) {
-            this.toast.showWithOptions(
-                {
-                    message: '未检测到网络,请连接网络',
-                    duration: 2000,
-                    position: 'top',
-                    styling: {
-                        opacity: 1.0,
-                        backgroundColor: '#f53d3d',
-                        textColor: '#FFFFFF'
-                    }
+            this.nativeService.toastShowWithOptions({
+                message: '未检测到网络,请连接网络',
+                duration: 2000,
+                position: 'top',
+                styling: {
+                    opacity: 1.0,
+                    backgroundColor: '#f53d3d',
+                    textColor: '#FFFFFF'
                 }
-            ).subscribe(
-                toast => {
-                }
-                );
+            });
         }
     }
 }

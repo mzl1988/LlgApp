@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 
 @IonicPage({
-    priority: 'low'
+    priority: 'off'
 })
 @Component({
     selector: 'page-about',

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Platform, IonicPage, Events, ViewController } from 'ionic-angular';
 import { BackButtonService } from '../../providers/BackButtonService';
-import { Toast } from '@ionic-native/toast';
 import { Storage } from '@ionic/storage';
 
 import { User } from "../../models";
 import { UserService } from "../../services";
+import { NativeService } from '../../providers/NativeService';
 import 'rxjs/add/operator/finally';
 
 @IonicPage({
@@ -24,11 +24,11 @@ export class LoginPage {
     constructor(
         backButtonService: BackButtonService,
         platform: Platform,
-        private toast: Toast,
         private storage: Storage,
         private userService: UserService,
         private events: Events,
-        private viewCtrl: ViewController
+        private viewCtrl: ViewController,
+        private nativeService: NativeService
     ) {
         platform.ready().then(() => {
             backButtonService.registerBackButtonAction(null);
@@ -44,15 +44,17 @@ export class LoginPage {
 
     logIn(username: HTMLInputElement, password: HTMLInputElement) {
         if (username.value.length === 0) {
-            this.toast.show(`请输入账号`, '2000', 'center').subscribe(
-                toast => {
-                }
-            );
+            this.nativeService.toastShowWithOptions({
+                message: '请输入账号',
+                duration: 2000,
+                position: 'top'
+            });
         } else if (password.value.length === 0) {
-            this.toast.show(`请输入密码`, '2000', 'center').subscribe(
-                toast => {
-                }
-            );
+            this.nativeService.toastShowWithOptions({
+                message: '请输入密码',
+                duration: 2000,
+                position: 'top'
+            });
         } else {
             this.storage.set('token', '123456');
             this.viewCtrl.dismiss();

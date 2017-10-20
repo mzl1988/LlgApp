@@ -19,14 +19,19 @@ export class TabsPage {
     ) {
         this.tabRoots = [
             {
-                root: 'HomePage',
-                tabTitle: '首页',
-                tabIcon: 'home'
+                root: 'FilmPage',
+                tabTitle: '电影',
+                tabIcon: 'film'
             },
             {
-                root: 'AboutPage',
-                tabTitle: '关于',
-                tabIcon: 'information-circle'
+                root: 'BookPage',
+                tabTitle: '读书',
+                tabIcon: 'book'
+            },
+            {
+                root: 'MusicPage',
+                tabTitle: '音乐',
+                tabIcon: 'musical-notes'
             },
             {
                 root: 'MinePage',

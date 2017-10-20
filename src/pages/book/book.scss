@@ -1,0 +1,149 @@
+page-book {
+    /*******************
+    searchbar
+    *******************/
+    // .searchbar-search-icon {
+    //     background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2013%2013'><path%20fill='rgba(0,%200,%200,%200.5)'%20d='M5,1c2.2,0,4,1.8,4,4S7.2,9,5,9S1,7.2,1,5S2.8,1,5,1%20M5,0C2.2,0,0,2.2,0,5s2.2,5,5,5s5-2.2,5-5S7.8,0,5,0%20L5,0z'/><line%20stroke='rgba(0,%200,%200,%200.5)'%20stroke-miterlimit='10'%20x1='12.6'%20y1='12.6'%20x2='8.2'%20y2='8.2'/></svg>") !important;
+    // }
+    .toolbar .searchbar-ios .searchbar-input {
+        background: rgba(255, 255, 255, 0.1) !important;
+    }
+    .cancel-btn-show {
+        margin-right: 0;
+        -webkit-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+    .cancel-btn-hide {
+        margin-left: 0;
+        margin-right: -100px;
+        -webkit-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+    .search-content {
+        left: 0;
+        right: 0;
+        top: 52px;
+        bottom: 0;
+        position: absolute;
+        background: #ffffff;
+    }
+    /*******************
+    slides
+    *******************/
+    ion-slides {
+        height: auto;
+    }
+    .swiper-pagination-bullet-active {
+        width: 20px !important;
+        background: color($colors, secondary) !important;
+    }
+    .swiper-pagination-bullet {
+        width: 5px;
+        height: 5px;
+        background: #ffffff;
+        opacity: .8;
+        border-radius: 0;
+    }
+    /*******************
+    section
+    *******************/
+    section:first-child {
+        margin-top: 10px;
+    }
+    section {
+        margin: 0;
+        overflow: hidden;
+        background-color: #fff;
+        header {
+            padding: 0 15px;
+            line-height: 25px;
+            h2 {
+                display: inline-block;
+                margin: 0;
+                font-size: 16px;
+            }
+            a {
+                float: right;
+                color: #42bd56;
+                text-decoration: none;
+            }
+        }
+        .section-content {
+            white-space: nowrap;
+            height: 200px;
+            .item:first-child {
+                margin-left: 15px;
+            }
+            .item:last-child {
+                padding-top: 0;
+                margin-right: 15px;
+                margin-top: 15px;
+                height: 182px;
+                background: #f8f8f8;
+                color: #8c8c8c;
+
+                .total {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    font-size: 12px
+                }
+
+                .divider {
+                    position: relative;
+                    height: 1px;
+                    width: 25px;
+                    margin: 2px 0 1px 0;
+                }
+                .divider:before {
+                    content: " ";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    height: 1px;
+                    border-top: 1px solid #8c8c8c;
+                    color: #8c8c8c;
+                    -webkit-transform-origin: 0 0;
+                    transform-origin: 0 0;
+                    -webkit-transform: scaleY(0.4);
+                    transform: scaleY(0.4);
+                }
+            }
+            .item {
+                padding-top: 15px;
+                margin-left: 8px;
+                display: inline-block;
+                vertical-align: top;
+                width: 100px;
+                text-align: center;
+            }
+            .item-poster {
+                width: 100%;
+                height: 142px;
+                overflow: hidden;
+                background-size: cover;
+                background-position: center;
+            }
+            .item-title {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                display: block;
+                margin-top: 6px;
+            }
+            .item-rating {
+                color: #aaa;
+                line-height: 15px;
+                margin-top: 5;
+                font-size: 10px;
+            }
+            .full {
+                color: #FFB712;
+            }
+        }
+    }
+}

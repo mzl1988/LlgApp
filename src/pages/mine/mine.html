@@ -19,20 +19,20 @@
 
     <ion-list>
         <a ion-item href='tel:13726268701' tappable>
-            <ion-icon name="call" color="primary" item-start></ion-icon>手机号
+            <ion-icon name="call" color="secondary" item-start></ion-icon>手机号
             <ion-note item-end>
                 13726268701
             </ion-note>
         </a>
         <button ion-item tappable (click)="toSettingsPage()">
-            <ion-icon name="settings" color="primary" item-start></ion-icon>设置
+            <ion-icon name="settings" color="secondary" item-start></ion-icon>设置
         </button>
         <button ion-item tappable (click)="toAboutPage()">
-            <ion-icon name="alert" color="primary" item-start></ion-icon>关于
+            <ion-icon name="alert" color="secondary" item-start></ion-icon>关于
         </button>
     </ion-list>
     <div padding>
-        <button ion-button block tappable (click)="logOut()">
+        <button ion-button block color="secondary" tappable (click)="logOut()">
             退出登录
         </button>
     </div>

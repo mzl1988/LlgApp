@@ -12,7 +12,6 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-
 @for $size from 0 through 20 {
     @each $position in top,
     left,
@@ -22,8 +21,18 @@
             margin-#{$position}: 1px * $size;
         }
     }
+    .font-size-#{$size} {
+        font-size: 1px * $size;
+    }
 }
 
+
+/*******************
+toast
+*******************/
+.toast-ios .toast-wrapper {
+    background: rgba(66, 189, 86, 0.9);
+}
 // 在android中没0.4px, 以下是实现android中0.4px样式 start
 $tabbar-border-color: rgba(0, 0, 0, 0.3);
 $border-color: #c8c7cc;
@@ -73,7 +82,6 @@ $border-color: #c8c7cc;
         -webkit-transform: scaleY(0.4);
         transform: scaleY(0.4);
     }
-
     .list-ios .item-block .item-inner:after {
         content: " ";
         position: absolute;

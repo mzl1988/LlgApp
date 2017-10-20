@@ -2,21 +2,26 @@ import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import 'rxjs/add/operator/finally';
 
+import { NativeService } from '../../providers/NativeService';
+
 @IonicPage({
     priority: 'high', // high > low > off(链接将不会加载)
-    name: 'HomePage',
-    segment: 'tabs/home'
+    name: 'FilmPage',
+    segment: 'tabs/film'
 })
 @Component({
-    selector: 'page-home',
-    templateUrl: 'home.html'
+    selector: 'page-film',
+    templateUrl: 'film.html'
 })
-export class HomePage {
+export class FilmPage {
+    onFocusInput = false;
+    animated = true;
+    debounce = 500;
     searchText: string;
-    showCancelButton = true;
     movieInTheaters: any;
 
     constructor(
+        private nativeService: NativeService
     ) {
     }
 
@@ -27,7 +32,35 @@ export class HomePage {
         console.log(this.searchText);
     }
 
-    onCancel(event) {
+    onCancel() {
+        this.onFocusInput = false;
+        let tabBarElement: any = document.querySelector('#myTabs .tabbar.show-tabbar');
+        tabBarElement.style.opacity = 1;
+    }
+
+    onFocus() {
+        this.onFocusInput = true;
+        let tabBarElement: any = document.querySelector('#myTabs .tabbar.show-tabbar');
+        tabBarElement.style.opacity = 0;
+    }
+    onBlur() {
+    }
+
+    doRefresh(refresher) {
+        setTimeout(() => {
+            this.nativeService.toastShowWithOptions({
+                message: '已更新20条内容',
+                duration: 2000,
+                position: 'top',
+                addPixelsY: 140,
+                styling: {
+                    opacity: 1.0,
+                    backgroundColor: '#42bd56',
+                    textColor: '#ffffff'
+                }
+            });
+            refresher.complete();
+        }, 2000);
     }
 
     getMovieInTheaters() {
