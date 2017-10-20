@@ -12,11 +12,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content pullingIcon="arrow-round-down" pullingText="下拉刷新"  refreshingText="更新数据中..."></ion-refresher-content>
-    </ion-refresher>
     <div *ngIf="!onFocusInput">
-
         <ion-slides [autoplay]="2000" [loop]="true" [pager]="true" [speed]="1500">
             <ion-slide>
                 <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M000001YCZlY3aBifi.jpg">
@@ -34,7 +30,7 @@
                 <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M000004ckGfg3zaho0.jpg">
             </ion-slide>
         </ion-slides>
-        <section>
+        <section class="margin-top-10">
             <header>
                 <h2>{{ movieInTheaters?.title}}</h2>
                 <a>更多</a>

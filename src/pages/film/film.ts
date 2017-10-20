@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, App } from 'ionic-angular';
 import 'rxjs/add/operator/finally';
 
 import { NativeService } from '../../providers/NativeService';
@@ -21,8 +21,14 @@ export class FilmPage {
     movieInTheaters: any;
 
     constructor(
+        private appCtrl: App,
         private nativeService: NativeService
     ) {
+        
+    }
+
+    ionViewDidEnter() {
+        this.appCtrl.setTitle('电影');
     }
 
     ionViewDidLoad() {
@@ -46,24 +52,18 @@ export class FilmPage {
     onBlur() {
     }
 
-    doRefresh(refresher) {
-        setTimeout(() => {
-            this.nativeService.toastShowWithOptions({
-                message: '已更新20条内容',
-                duration: 2000,
-                position: 'top',
-                addPixelsY: 140,
-                styling: {
-                    opacity: 1.0,
-                    backgroundColor: '#42bd56',
-                    textColor: '#ffffff'
-                }
-            });
-            refresher.complete();
-        }, 2000);
-    }
-
     getMovieInTheaters() {
+        // this.nativeService.toastShowWithOptions({
+        //     message: '已更新20条内容',
+        //     duration: 2000,
+        //     position: 'top',
+        //     addPixelsY: 140,
+        //     styling: {
+        //         opacity: 1.0,
+        //         backgroundColor: '#42bd56',
+        //         textColor: '#ffffff'
+        //     }
+        // });
         this.movieInTheaters = {
             title: '影院热映',
             total: 65,

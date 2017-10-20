@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, App } from 'ionic-angular';
 import 'rxjs/add/operator/finally';
 
 @IonicPage({
@@ -19,7 +19,12 @@ export class BookPage {
     movieInTheaters: any;
 
     constructor(
+        private appCtrl: App
     ) {
+    }
+
+    ionViewDidEnter() {
+        this.appCtrl.setTitle('读书');
     }
 
     ionViewDidLoad() {

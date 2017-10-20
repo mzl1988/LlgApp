@@ -1,4 +1,7 @@
 page-music {
+    .header-ios .toolbar-ios:last-child .toolbar-background-ios:after {
+        display: none;
+    }
     /*******************
     searchbar
     *******************/
