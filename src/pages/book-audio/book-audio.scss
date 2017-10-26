@@ -1,0 +1,25 @@
+page-book-audio {
+    .toolbar-background-ios {
+        background: transparent;
+        border-color: rgba(66, 189, 86, 0.5) !important;
+    }
+
+    .bar-button-default-ios {
+        color: rgba(66, 189, 86, 0.5);
+    }
+    .toolbar-title-ios {
+        color: rgba(66, 189, 86, 0.5);
+    }
+
+    ion-slides {
+        position: absolute;
+        top: 44px;
+        left: 0;
+        right: 0;
+        bottom: 150px;
+        width: 100%;
+        z-index: 9;
+        height: inherit;
+        background: red;
+    }
+}

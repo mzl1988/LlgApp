@@ -1,79 +1,28 @@
 <ion-header>
-    <ion-toolbar color="secondary">
-        <ion-searchbar type="text" [(ngModel)]="searchText" [animated]="animated" [debounce]="debounce" (ionInput)="onInput($event)"
-            (ionCancel)="onCancel($event)" (ionFocus)="onFocus()" (ionBlur)="onBlur()" placeholder="读书">
-        </ion-searchbar>
-        <ion-buttons end [ngStyle]="{'margin-left': onFocusInput ? '0.2rem' : '0', 'margin-right': onFocusInput ? '0.2rem' : '0' }">
-            <button ion-button tappable (click)="onCancel()" [ngClass]="{'cancel-btn-show': onFocusInput, 'cancel-btn-hide': !onFocusInput}">
-                取消
-            </button>
-        </ion-buttons>
+    <ion-toolbar>
+        <ion-segment color="secondary" [(ngModel)]="segment">
+            <ion-segment-button value="new">
+                最新
+            </ion-segment-button>
+            <ion-segment-button value="hot">
+                最热
+            </ion-segment-button>
+        </ion-segment>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div *ngIf="!onFocusInput">
-        <ion-slides [autoplay]="2000" [loop]="true" [pager]="true" [speed]="1500">
-            <ion-slide>
-                <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M000001YCZlY3aBifi.jpg">
-            </ion-slide>
-            <ion-slide>
-                <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M000001s0BXx3Zxcwb.jpg">
-            </ion-slide>
-            <ion-slide>
-                <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M000002cwng4353HKz.jpg">
-            </ion-slide>
-            <ion-slide>
-                <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M00000236sfA406cmk.jpg">
-            </ion-slide>
-            <ion-slide>
-                <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M000004ckGfg3zaho0.jpg">
-            </ion-slide>
-        </ion-slides>
-        <section class="margin-top-10">
-            <header>
-                <h2>{{ movieInTheaters?.title}}</h2>
-                <a>更多</a>
-            </header>
-            <ion-scroll class="section-content" scrollX="true" scrollY="false">
-                <div class="item" *ngFor="let subject of movieInTheaters?.subjects">
-                    <div class="item-poster" [ngStyle]="{'background-image':'url(' + subject.images.medium + ')'}"></div>
-                    <span class="item-title">{{ subject.title }}</span>
-                    <div class="item-rating">
-                        <ion-icon name="star" [ngClass]="{'full': subject.rating.stars >= 1}"></ion-icon>
-                        <ion-icon name="star" [ngClass]="{'full': subject.rating.stars >= 2}"></ion-icon>
-                        <ion-icon name="star" [ngClass]="{'full': subject.rating.stars >= 3}"></ion-icon>
-                        <ion-icon name="star" [ngClass]="{'full': subject.rating.stars >= 4}"></ion-icon>
-                        <ion-icon name="star" [ngClass]="{'full': subject.rating.stars == 5}"></ion-icon>
-                        {{ subject.rating.average }}
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="total">
-                        <div>
-                            全部
-                        </div>
-                        <div class="divider"></div>
-                        <div class="font-size-10">
-                            {{ movieInTheaters?.total }}部
-                        </div>
-                    </div>
-                </div>
-            </ion-scroll>
-        </section>
-    </div>
-
-</ion-content>
-
-<ion-scroll class="search-content" scrollX="false" scrollY="true" *ngIf="onFocusInput">
-    <ion-list>
-        <ion-item *ngFor="let subject of movieInTheaters?.subjects; let i = index">
-            <span item-start>{{ i + 1 }}</span>
-            {{ subject.title }}
-        </ion-item>
-        <ion-item *ngFor="let subject of movieInTheaters?.subjects; let i = index">
-            <span item-start>{{ i + 1 }}</span>
-            {{ subject.title }}
-        </ion-item>
+<ion-content fullscreen class="outer-content">
+    <ion-list class="thumbnail-list">
+        <button ion-item *ngFor="let article of newArticles" tappable (click)="toBookAudio('new', article.audioId)">
+            <ion-thumbnail item-start>
+                <img [src]="article.audioPic">
+            </ion-thumbnail>
+            <h2>{{ article.audioName }}</h2>
+            <p>{{ article.orderNum }}期：{{ article.updateTime }}</p>
+            <button ion-button clear item-end><ion-icon name="headset"></ion-icon></button>
+        </button>
     </ion-list>
-</ion-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

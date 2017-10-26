@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 
 @IonicPage({
     priority: 'off',
@@ -14,8 +13,7 @@ import { Storage } from '@ionic/storage';
 export class SettingsPage {
 
     constructor(
-        navParams: NavParams,
-        private storage: Storage
+        navParams: NavParams
     ) {
         console.log(navParams);
         

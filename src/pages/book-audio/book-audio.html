@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            {{ article?.audioName }}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <ion-slides (ionSlideDidChange)="slideChanged()" (touchstart)="touchStart()" (touchend)="touchEnd()">
+        <ion-slide *ngFor="let article of articles">
+            <div style="width: 100%; height: 100vw;background: #ffffff; padding: 36px;">
+                    {{ article.audioName }}
+            </div>
+            
+        </ion-slide>
+    </ion-slides>
+</ion-content>

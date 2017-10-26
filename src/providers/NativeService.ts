@@ -3,8 +3,9 @@ import { Platform, AlertController, ToastController } from 'ionic-angular';
 import { CodePush, SyncStatus } from '@ionic-native/code-push';
 import { Network } from '@ionic-native/network';
 import { AppVersion } from '@ionic-native/app-version';
-import { CODE_PUSH_DEPLOYMENT_KEY, ENV } from "./Constants";
 import { Toast, ToastOptions } from '@ionic-native/toast';
+import { Storage } from '@ionic/storage';
+import { CODE_PUSH_DEPLOYMENT_KEY, ENV } from "./Constants";
 
 @Injectable()
 export class NativeService {
@@ -19,7 +20,8 @@ export class NativeService {
         private codePush: CodePush,
         private ngZone: NgZone,
         private network: Network,
-        private appVersion: AppVersion
+        private appVersion: AppVersion,
+        private storage: Storage,
     ) {
     }
 
@@ -178,5 +180,27 @@ export class NativeService {
             toast.present();
         }
 
+    }
+
+    /**
+     * Storage
+     */
+
+    setStorage(key: any, value: any) {
+        this.storage.set(key, value);
+    }
+
+    getStorage(key: any): Promise<any> {
+        return new Promise((resolve) => {
+            this.storage.get(key).then((value) => {
+                resolve(value);
+            }).catch(err => {
+                this.warn('getStorage:' + err);
+            });
+        });
+    }
+
+    removeStorage(key: any) {
+        this.storage.remove(key);
     }
 }

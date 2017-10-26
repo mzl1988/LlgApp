@@ -33,6 +33,12 @@ toast
 .toast-ios .toast-wrapper {
     background: rgba(66, 189, 86, 0.9);
 }
+/*******************
+ionic
+*******************/
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
+    color: color($colors, secondary);
+}
 // 在android中没0.4px, 以下是实现android中0.4px样式 start
 $tabbar-border-color: rgba(0, 0, 0, 0.3);
 $border-color: #c8c7cc;
@@ -62,6 +68,7 @@ $border-color: #c8c7cc;
     }
     .header-ios .toolbar-ios:last-child .toolbar-background-ios {
         border-bottom: 0;
+        border-width: 0;
     }
     .alert-ios .alert-button {
         position: relative;
@@ -118,7 +125,7 @@ $border-color: #c8c7cc;
     .thumbnail-list .item-block .item-inner:after {
         content: " ";
         position: absolute;
-        left: 80px;
+        left: 88px;
         bottom: 0;
         right: 0;
         height: 1px;

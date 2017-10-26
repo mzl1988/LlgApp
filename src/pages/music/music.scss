@@ -1,6 +1,10 @@
 page-music {
     .header-ios .toolbar-ios:last-child .toolbar-background-ios:after {
-        display: none;
+        border-bottom: 1px solid color($colors, secondary);
+        color: color($colors, secondary);
+    }
+    .header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
+        border-color: color($colors, secondary);
     }
     /*******************
     searchbar

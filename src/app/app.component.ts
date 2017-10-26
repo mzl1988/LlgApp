@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Platform, LoadingController, ModalController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Storage } from '@ionic/storage';
 
 import { NativeService } from '../providers/NativeService';
 import { JpushService } from '../providers/JpushService';
@@ -22,30 +21,32 @@ export class MyApp {
         private nativeService: NativeService,
         private jpushService: JpushService,
         backButtonService: BackButtonService,
-        private storage: Storage,
         loadingCtrl: LoadingController,
         private modalCtrl: ModalController,
         private events: Events
     ) {
         platform.ready().then(() => {
             splashScreen.hide();
-            this.loginModal = this.modalCtrl.create('LoginPage');
-            this.loginModal.present();
-            storage.get('token').then((token) => {
+            nativeService.getStorage('token').then((token) => {
                 if (token) {
-                    let loading = loadingCtrl.create({
-                        content: '自动登陆中...',
-                        duration: 1500
-                    });
-                    loading.onDidDismiss(() => {
-                        this.rootPage = 'TabsPage';
-                        this.events.publish('loginModal:dismiss', 'login');
-                    });
-                    loading.present();
+                    // let loading = loadingCtrl.create({
+                    //     content: '自动登陆中...',
+                    //     duration: 1500
+                    // });
+                    // loading.onDidDismiss(() => {
+                    //     this.rootPage = 'TabsPage';
+                    //     this.events.publish('loginModal:dismiss', 'login');
+                    // });
+                    // loading.present();
+                    this.rootPage = 'TabsPage';
+                    this.events.publish('loginModal:dismiss', 'login');
                     // jpush
                     this.initJpush();
                     // 检测网络
                     this.checkNetwork();
+                } else {
+                    this.loginModal = this.modalCtrl.create('LoginPage');
+                    this.loginModal.present();
                 }
             });
             // code push
@@ -66,7 +67,7 @@ export class MyApp {
             this.initJpush();
         });
         this.events.subscribe('user:logout', (str) => {
-            this.storage.remove('token');
+            this.nativeService.removeStorage('token');
             this.loginModal = this.modalCtrl.create('LoginPage');
             this.loginModal.present();
             this.rootPage = 'TabsPage';

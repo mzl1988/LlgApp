@@ -27,7 +27,7 @@ Ionic 2 专注于以标准的 HTML 、 CSS 和 JavaScript 来构建移动站点�
 ## 在浏览器中运行
 * npm config set sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
 * npm install
-* ionic serve 或 ionic serve --address 192.168.10.113 --port 6335 --livereload-port 35600 --dev-logger-port 53600
+* ionic serve 或 ionic serve --address 192.168.10.113 --port 6228 --livereload-port 35600 --dev-logger-port 53600
 
 ## Navigation
 
@@ -55,14 +55,14 @@ Ionic App支持主题风格。要改变主题，只需要调整src/theme/variabl
 emulate命令将App部署到特定的平台设备上。你也可以通过在特定的模拟器上添加--livereload选项运行live reload。live reload功能类似ionic serve，但是不是使用标准的浏览器来开发和调试，编译后的hybrid应用本身会监控任何文件改变并在需要的时候重新载入App。这降低了针对小改动需要频繁重新编译App的需求。然而任何插件的改变将导致完全的重新编译。为使live reload能够正常工作，开发机和模拟器必须在一个相同的本地网络中，并且设备必须支持web sockets。
 
 * ionic cordova emulate android
-* ionic cordova emulate android --livereload --address 192.168.56.1 --port 6338 --livereload-port 35700 --dev-logger-port 53700
+* ionic cordova emulate android --livereload --address 192.168.56.1 --port 6228 --livereload-port 35700 --dev-logger-port 53700
 
 ## run 在连接的设备上运行Ionic项目
 
 run命令将应用部署到指定的设备上。你可以通过添加--livereload选项在指定的平台设备上运行live reload。live reload功能类似ionic serve，但是不是使用标准的浏览器来开发和调试，编译后的hybrid应用本身会监控任何文件改变并在需要的时候重新载入App。这降低了针对小改动需要频繁重新编译App的需求。然而任何插件的改变将导致完全的重新编译。为使live reload能够正常工作，开发机和模拟器必须在一个相同的本地网络中，并且设备必须支持web sockets。
 
 ionic cordova run android --livereload
-ionic cordova run android --address 192.168.10.113 --port 6335 --livereload
+ionic cordova run android --address 192.168.10.113 --port 6228 --livereload
 
 ## 制作签名文件(.keystore文件)
 keytool -genkey -v -keystore LlgApp.keystore -alias LlgApp -keyalg RSA -validity 10000
