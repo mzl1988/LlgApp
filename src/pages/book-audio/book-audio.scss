@@ -1,25 +1,31 @@
 page-book-audio {
+    .header-ios .toolbar-ios:last-child .toolbar-background-ios:after {
+        border-bottom: 1px solid color($colors, secondary) !important;
+        color: color($colors, secondary) !important;
+    }
     .toolbar-background-ios {
         background: transparent;
-        border-color: rgba(66, 189, 86, 0.5) !important;
+        border-color: color($colors, secondary) !important;
     }
-
     .bar-button-default-ios {
-        color: rgba(66, 189, 86, 0.5);
+        color: color($colors, secondary);
     }
     .toolbar-title-ios {
-        color: rgba(66, 189, 86, 0.5);
+        color: color($colors, secondary);
     }
-
     ion-slides {
         position: absolute;
-        top: 44px;
+        top: 47px;
         left: 0;
         right: 0;
-        bottom: 150px;
         width: 100%;
         z-index: 9;
         height: inherit;
-        background: red;
+    }
+    ion-slide {
+        align-items: inherit !important;
+    }
+    .scroll-content {
+        overflow-y: hidden;
     }
 }

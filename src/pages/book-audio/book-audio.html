@@ -7,12 +7,61 @@
 </ion-header>
 
 <ion-content fullscreen>
+    <div class="m-song-disc-after">
+
+    </div>
     <ion-slides (ionSlideDidChange)="slideChanged()" (touchstart)="touchStart()" (touchend)="touchEnd()">
         <ion-slide *ngFor="let article of articles">
-            <div style="width: 100%; height: 100vw;background: #ffffff; padding: 36px;">
-                    {{ article.audioName }}
+            <div class="m-song-wrap">
+                <div class="m-song-disc">
+                    <div class="m-song-turn" [ngClass]="{'m-song-playing': isPlay}">
+                        <div class="m-song-img">
+                            <img class="u-img" [src]="article.audioPic">
+                        </div>
+                    </div>
+                    <span class="m-song-plybtn" *ngIf="!isPlay" (click)="toPlay()"></span>
+                </div>
             </div>
-            
         </ion-slide>
     </ion-slides>
+
+    <div class="m-song-footer">
+        <audio id="article-audio" [src]="article?.mp3PlayUrl" autoplay preload>
+        </audio>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-range min="0" [max]="duration" [(ngModel)]="saturation" color="secondary" (ionFocus)="rangeTouchStart()" (ionBlur)="rangeTouchEnd()" (ionChange)="rangeChange()">
+                        <ion-label range-left color="secondary">{{ currentTime }}</ion-label>
+                        <ion-label range-right color="secondary">{{ totalTime }}</ion-label>
+                    </ion-range>
+                </ion-col>
+            </ion-row>
+            <ion-row text-center class="m-footer-btns">
+                <ion-col>
+                    1
+                </ion-col>
+                <ion-col>
+                    <button type="button" [disabled]="audioIndex === 0">
+                        <ion-icon name="ios-skip-backward-outline" (click)="audioBackward()"></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col>
+                    <button type="button" class="play-btn" (click)="toPlay()">
+                        <ion-icon name="play" *ngIf="!isPlay"></ion-icon>
+                        <ion-icon name="pause" *ngIf="isPlay"></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col>
+                    <button type="button" [disabled]="audioIndex === articles.length">
+                        <ion-icon name="ios-skip-forward-outline" (click)="audioForward()"></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col>
+                    5
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+
 </ion-content>
