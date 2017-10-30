@@ -6,20 +6,20 @@ import _ from 'lodash';
 
 @IonicPage({
     priority: 'off', // high > low > off(链接将不会加载)
-    name: 'BookAudioPage',
-    segment: 'book-audio/:type/:audioId'
+    name: 'RadioAudioPage',
+    segment: 'radio-audio/:id'
 })
 @Component({
-    selector: 'page-book-audio',
-    templateUrl: 'book-audio.html'
+    selector: 'page-radio-audio',
+    templateUrl: 'radio-audio.html'
 })
-export class BookAudioPage {
+export class RadioAudioPage {
     @ViewChild(Slides) slides: Slides;
     type: string;
-    audioId: number;
+    id: number;
     audioIndex = 0;
-    article: any;
-    articles: any = [];
+    audio: any;
+    audios: any = [];
     audioPlayer: any;
     isPlay = false;
     seeking = false;
@@ -33,13 +33,11 @@ export class BookAudioPage {
         nativeService: NativeService,
         navParams: NavParams
     ) {
-        this.type = navParams.data.type;
-        this.audioId = navParams.data.audioId;
-        let key = this.type === 'new' ? 'newArticles' : '';
-        nativeService.getStorage('newArticles').then((articles) => {
-            if (articles) {
-                this.articles = articles;
-                this.findArticle();
+        this.id = navParams.data.id;
+        nativeService.getStorage('audios').then((audios) => {
+            if (audios) {
+                this.audios = audios;
+                this.findAudio();
             }
         });
         
@@ -50,7 +48,11 @@ export class BookAudioPage {
 
     slideChanged() {
         this.audioIndex = this.slides.getActiveIndex();
-        this.article = this.articles[this.audioIndex];
+        this.audio = this.audios[this.audioIndex];
+        $('page-radio-audio ion-content').backgroundBlur({
+            imageURL: this.audio.audioPic,
+            blurAmount: 10
+        });
     }
 
     // 上一
@@ -76,25 +78,26 @@ export class BookAudioPage {
     rangeTouchEnd() {
         setTimeout(() => {
             this.rangeTouch = false;
+            this.audioPlayer.currentTime = this.saturation;
         }, 1000);
     }
 
     rangeChange() {
         if(this.rangeTouch) {
-            console.log(this.saturation);
+            // console.log(this.saturation);
         }
     }
 
-    findArticle() {
-        this.article = _.find(this.articles, { audioId: Number(this.audioId) });
-        this.audioPlayer = document.getElementById("article-audio");
+    findAudio() {
+        this.audio = _.find(this.audios, { audioId: Number(this.id) });
+        this.audioPlayer = document.getElementById("audio-audio");
         this.initEventListener();
-        this.audioIndex = _.findIndex(this.articles, { audioId: Number(this.audioId) });
+        this.audioIndex = _.findIndex(this.audios, { audioId: Number(this.id) });
         setTimeout(() => {
             this.slides.slideTo(this.audioIndex, 0);
         }, 500);
-        $('page-book-audio ion-content').backgroundBlur({
-            imageURL: this.article.uploaderImg,
+        $('page-radio-audio ion-content').backgroundBlur({
+            imageURL: this.audio.audioPic,
             blurAmount: 10
         });
     }

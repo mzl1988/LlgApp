@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            {{ article?.audioName }}
+            {{ audio?.audioName }}
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -11,12 +11,12 @@
 
     </div>
     <ion-slides (ionSlideDidChange)="slideChanged()" (touchstart)="touchStart()" (touchend)="touchEnd()">
-        <ion-slide *ngFor="let article of articles">
+        <ion-slide *ngFor="let audio of audios">
             <div class="m-song-wrap">
                 <div class="m-song-disc">
                     <div class="m-song-turn" [ngClass]="{'m-song-playing': isPlay}">
                         <div class="m-song-img">
-                            <img class="u-img" [src]="article.audioPic">
+                            <img class="u-img" [src]="audio.audioPic">
                         </div>
                     </div>
                     <span class="m-song-plybtn" *ngIf="!isPlay" (click)="toPlay()"></span>
@@ -26,7 +26,7 @@
     </ion-slides>
 
     <div class="m-song-footer">
-        <audio id="article-audio" [src]="article?.mp3PlayUrl" autoplay preload>
+        <audio id="audio-audio" [src]="audio?.mp3PlayUrl" autoplay preload>
         </audio>
         <ion-grid>
             <ion-row>
@@ -38,9 +38,9 @@
                 </ion-col>
             </ion-row>
             <ion-row text-center class="m-footer-btns">
-                <ion-col>
+                <!-- <ion-col>
                     1
-                </ion-col>
+                </ion-col> -->
                 <ion-col>
                     <button type="button" [disabled]="audioIndex === 0">
                         <ion-icon name="ios-skip-backward-outline" (click)="audioBackward()"></ion-icon>
@@ -53,13 +53,13 @@
                     </button>
                 </ion-col>
                 <ion-col>
-                    <button type="button" [disabled]="audioIndex === articles.length">
+                    <button type="button" [disabled]="audioIndex === audios.length">
                         <ion-icon name="ios-skip-forward-outline" (click)="audioForward()"></ion-icon>
                     </button>
                 </ion-col>
-                <ion-col>
+                <!-- <ion-col>
                     5
-                </ion-col>
+                </ion-col> -->
             </ion-row>
         </ion-grid>
     </div>

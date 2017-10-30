@@ -18,11 +18,17 @@
     right,
     bottom {
         .margin-#{$position}-#{$size} {
-            margin-#{$position}: 1px * $size;
+            margin-#{$position}: 1px * $size !important;
+        }
+        .padding-#{$position}-#{$size} {
+            padding-#{$position}: 1px * $size !important;
         }
     }
+    .margin-#{$size} {
+        margin: 1px * $size !important;
+    }
     .font-size-#{$size} {
-        font-size: 1px * $size;
+        font-size: 1px * $size !important;
     }
 }
 
@@ -45,7 +51,6 @@ ionic
 .bar-button-clear-ios-default {
     color: color($colors, secondary);
 }
-
 // 在android中没0.4px, 以下是实现android中0.4px样式 start
 $tabbar-border-color: rgba(0, 0, 0, 0.3);
 $border-color: #c8c7cc;

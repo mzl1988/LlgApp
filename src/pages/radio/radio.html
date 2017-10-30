@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-segment color="secondary" [(ngModel)]="segment" (ionChange)="segmentChange()">
+            <ion-segment-button value="hot">
+                热门
+            </ion-segment-button>
+            <ion-segment-button value="fine">
+                精品
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="outer-content">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6 *ngFor="let radio of radios">
+                <ion-card class="margin-0" tappable (click)="toRadio(radio)">
+                    <img [src]="radio.pic" />
+                    <ion-card-content>
+                        <ion-card-title>
+                            {{ segment === 'hot' ? radio.rname : radio.name }}
+                        </ion-card-title>
+                        <p>
+                            {{ segment === 'hot' ? radio.des : radio.desc }}
+                        </p>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

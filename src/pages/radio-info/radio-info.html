@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            {{ detail?.name}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen class="outer-content">
+    <ion-list class="margin-bottom-0 radio-info">
+        <ion-item>
+            <ion-thumbnail item-start>
+                <img [src]="detail?.pic" class="radio-pic">
+            </ion-thumbnail>
+            <h2>{{ detail?.name}}</h2>
+            <p>上传者：{{ detail?.uploadUserName}}</p>
+            <p>更新频率：{{ detail?.updateDay}}</p>
+        </ion-item>
+        <ion-item>
+            <p class="radio-desc">{{ detail?.radioDesc}}</p>
+        </ion-item>
+    </ion-list>
+    <ion-list class="audio-list" *ngIf="detail">
+        <button ion-item *ngFor="let audio of audios" tappable (click)="toAudio(audio.audioId)">
+            <span class="play-icon">
+                <ion-icon name="play"></ion-icon>
+            </span>
+            <span class="audio-title">{{ audio.audioName }}</span>
+        </button>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

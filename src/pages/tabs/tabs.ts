@@ -24,9 +24,9 @@ export class TabsPage {
                 tabIcon: 'film'
             },
             {
-                root: 'BookPage',
-                tabTitle: '读书',
-                tabIcon: 'book'
+                root: 'RadioPage',
+                tabTitle: '电台',
+                tabIcon: 'radio'
             },
             {
                 root: 'MusicPage',

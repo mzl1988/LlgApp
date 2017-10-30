@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { BookAudioPage } from './book-audio';
+import { RadioInfoPage } from './radio-info';
 
 @NgModule({
     declarations: [
-        BookAudioPage
+        RadioInfoPage
     ],
     imports: [
-        IonicPageModule.forChild(BookAudioPage),
+        IonicPageModule.forChild(RadioInfoPage),
     ],
     entryComponents: [
-        BookAudioPage
+        RadioInfoPage
     ]
 })
-export class BookAudioModule { }
+export class RadioInfoModule { }
