@@ -10,10 +10,20 @@ export class TestService {
     constructor(
         private jsonp: Jsonp,
     ) { }
+    
+    // 电影
+    getHotMovie(): Observable<any> {
+        return this.jsonp
+            .get(`http://m.mtime.cn/Service/callback.mi/Showtime/LocationMovies.api?locationId=290&t=201710311440288837&format=json&callback=JSONP_CALLBACK`)
+            .map((response: Response) => {
+                return response.json();
+            });
+    }
 
+    // 电台
     getHotRadio(): Observable<any> {
         return this.jsonp
-            .get(`http://www.tingban.cn/webapi/labelinfo/get?id=63&_=1509346152265&format=json&callback=JSONP_CALLBACK`)
+            .get(`http://www.tingban.cn/webapi/labelinfo/get?id=63&format=json&callback=JSONP_CALLBACK`)
             .map((response: Response) => {
                 return response.json();
             });

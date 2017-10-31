@@ -9,7 +9,7 @@
 <ion-content fullscreen class="outer-content">
     <ion-list class="margin-bottom-0 radio-info">
         <ion-item>
-            <ion-thumbnail item-start>
+            <ion-thumbnail item-start style="margin: 10px 16px 10px 0">
                 <img [src]="detail?.pic" class="radio-pic">
             </ion-thumbnail>
             <h2>{{ detail?.name}}</h2>
@@ -20,7 +20,7 @@
             <p class="radio-desc">{{ detail?.radioDesc}}</p>
         </ion-item>
     </ion-list>
-    <ion-list class="audio-list" *ngIf="detail">
+    <ion-list class="audio-list" *ngIf="audios.length > 0">
         <button ion-item *ngFor="let audio of audios" tappable (click)="toAudio(audio.audioId)">
             <span class="play-icon">
                 <ion-icon name="play"></ion-icon>

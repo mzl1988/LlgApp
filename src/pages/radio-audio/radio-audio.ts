@@ -40,7 +40,7 @@ export class RadioAudioPage {
                 this.findAudio();
             }
         });
-        
+
     }
 
     ionViewDidLoad() {
@@ -49,10 +49,7 @@ export class RadioAudioPage {
     slideChanged() {
         this.audioIndex = this.slides.getActiveIndex();
         this.audio = this.audios[this.audioIndex];
-        $('page-radio-audio ion-content').backgroundBlur({
-            imageURL: this.audio.audioPic,
-            blurAmount: 10
-        });
+        $('page-radio-audio ion-content').backgroundBlur(this.audio.audioPic);
     }
 
     // 上一
@@ -71,7 +68,7 @@ export class RadioAudioPage {
         // console.log('2222222');       
     }
 
-    rangeTouchStart () {
+    rangeTouchStart() {
         this.rangeTouch = true;
     }
 
@@ -83,7 +80,7 @@ export class RadioAudioPage {
     }
 
     rangeChange() {
-        if(this.rangeTouch) {
+        if (this.rangeTouch) {
             // console.log(this.saturation);
         }
     }
@@ -102,7 +99,7 @@ export class RadioAudioPage {
         });
     }
 
-    initEventListener () {
+    initEventListener() {
         this.audioPlayer.onloadstart = () => {
             this.seeking = true;
             console.log('$$$ audioElement::loadstart');
@@ -129,7 +126,7 @@ export class RadioAudioPage {
         };
 
         this.audioPlayer.ontimeupdate = () => {
-            if(!this.rangeTouch) {
+            if (!this.rangeTouch) {
                 this.saturation = Math.floor(this.audioPlayer.currentTime);
                 this.currentTime = Math.floor(this.saturation / 60) + ':' + Math.floor(this.saturation % 60);
             }
@@ -138,6 +135,9 @@ export class RadioAudioPage {
         // 播放结束
         this.audioPlayer.onended = () => {
             console.log('$$$ audioElement::播放结束');
+            if (this.audioIndex !== this.audios.length) {
+                this.audioForward();
+            }
         };
         // 客户端主动终止下载（不是因为错误引起）
         this.audioPlayer.onabort = () => {
@@ -152,8 +152,8 @@ export class RadioAudioPage {
     }
 
     toPlay() {
-        if(!this.hasError) {
-            if(this.isPlay) {
+        if (!this.hasError) {
+            if (this.isPlay) {
                 this.audioPlayer.pause()
             } else {
                 this.audioPlayer.play();

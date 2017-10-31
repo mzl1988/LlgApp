@@ -41,18 +41,18 @@
                 <!-- <ion-col>
                     1
                 </ion-col> -->
-                <ion-col>
+                <ion-col class="justify-content-center">
                     <button type="button" [disabled]="audioIndex === 0">
                         <ion-icon name="ios-skip-backward-outline" (click)="audioBackward()"></ion-icon>
                     </button>
                 </ion-col>
-                <ion-col>
+                <ion-col class="justify-content-center">
                     <button type="button" class="play-btn" (click)="toPlay()">
                         <ion-icon name="play" *ngIf="!isPlay"></ion-icon>
                         <ion-icon name="pause" *ngIf="isPlay"></ion-icon>
                     </button>
                 </ion-col>
-                <ion-col>
+                <ion-col class="justify-content-center">
                     <button type="button" [disabled]="audioIndex === audios.length">
                         <ion-icon name="ios-skip-forward-outline" (click)="audioForward()"></ion-icon>
                     </button>

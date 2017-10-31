@@ -28,4 +28,9 @@ page-radio-audio {
     .scroll-content {
         overflow-y: hidden;
     }
+
+    .justify-content-center {
+        display: flex;
+        justify-content: center;
+    }
 }

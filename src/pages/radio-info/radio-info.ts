@@ -39,7 +39,9 @@ export class RadioInfoPage {
 
     ionViewDidLoad() {
         this.getRadioDetail();
-        this.getAudioList(null);
+        setTimeout(() => {
+            this.getAudioList(null);
+        }, 500);
     }
 
     getRadioDetail() {

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, App } from 'ionic-angular';
 import 'rxjs/add/operator/finally';
-
+import { TestService } from "../../services";
 import { NativeService } from '../../providers/NativeService';
+declare let $: any;
 
 @IonicPage({
     priority: 'high', // high > low > off(链接将不会加载)
@@ -11,7 +12,8 @@ import { NativeService } from '../../providers/NativeService';
 })
 @Component({
     selector: 'page-film',
-    templateUrl: 'film.html'
+    templateUrl: 'film.html',
+    providers: [TestService]
 })
 export class FilmPage {
     onFocusInput = false;
@@ -22,6 +24,7 @@ export class FilmPage {
 
     constructor(
         private appCtrl: App,
+        private testService: TestService,
         private nativeService: NativeService
     ) {
         
@@ -32,6 +35,7 @@ export class FilmPage {
     }
 
     ionViewDidLoad() {
+        this.getHotMovie();
         this.getMovieInTheaters();
     }
     onInput(event) {
@@ -51,6 +55,22 @@ export class FilmPage {
     }
     onBlur() {
     }
+
+    getHotMovie() {
+        this.testService.getHotMovie()
+        .finally(() => {
+        })
+        .subscribe(res => {
+            console.log(res);
+            
+        },
+        error => {
+            console.log(error);
+            
+        });
+    }
+
+    
 
     getMovieInTheaters() {
         // this.nativeService.toastShowWithOptions({

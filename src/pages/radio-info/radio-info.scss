@@ -1,11 +1,20 @@
 page-radio-info {
     .radio-info {
         position: fixed;
-        top: 47px;
+        top: 45px;
         z-index: 10;
+        background: #ffffff;
+    }
+    .radio-info>.item-block:first-child:before,
+    .radio-info>.item-block:last-child:after,
+    .radio-info>.item-block .item-inner:after {
+        display: none;
     }
     .radio-info>.item-block {
         border-top: 0 !important;
+    }
+    .radio-info>.item-block .item-inner .label-ios {
+        margin-top: 0;
     }
     .radio-info>.item-block .item-inner {
         border-bottom: 0 !important;

@@ -66,7 +66,7 @@ export class HttpInterceptorService extends Http {
         });
     }
 
-    private catchErrors() {
+    catchErrors() {
         return (res: Response) => {
             if (res.status < 200 || res.status >= 300) {
                 let msg = this.status['status.'+res.status];
@@ -75,7 +75,7 @@ export class HttpInterceptorService extends Http {
         };
     }
 
-    private setHeaders(objectToSetHeadersTo: Request | RequestOptionsArgs) {
-        objectToSetHeadersTo.headers.set('token', this.token);
+    setHeaders(objectToSetHeadersTo: Request | RequestOptionsArgs) {
+        // objectToSetHeadersTo.headers.set('token', this.token);
     }
 }
