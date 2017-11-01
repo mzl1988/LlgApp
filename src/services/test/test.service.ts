@@ -11,6 +11,14 @@ export class TestService {
         private jsonp: Jsonp,
     ) { }
 
+    getHotMovie(): Observable<any> {
+        return this.jsonp
+            .get(`https://api.douban.com/v2/book/1220562?format=json&callback=JSONP_CALLBACK`)
+            .map((response: Response) => {
+                return response.json();
+            });
+    }
+
     // 电台
     getHotRadio(): Observable<any> {
         return this.jsonp

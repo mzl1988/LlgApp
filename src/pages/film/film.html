@@ -13,7 +13,7 @@
 
 <ion-content fullscreen>
     <div *ngIf="!onFocusInput">
-        <ion-slides [autoplay]="2000" [loop]="true" [pager]="true" [speed]="1500">
+        <ion-slides [autoplay]="2000" [loop]="true" [pager]="true" [speed]="1500" (ionSlideTap)="slideTap()">
             <ion-slide>
                 <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M000001YCZlY3aBifi.jpg">
             </ion-slide>
@@ -30,13 +30,44 @@
                 <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M000004ckGfg3zaho0.jpg">
             </ion-slide>
         </ion-slides>
-        <section class="margin-top-10">
+        <section class="margin-top-10" *ngIf="movieInTheaters">
             <header>
-                <h2>{{ movieInTheaters?.title}}</h2>
+                <h2>影院热映</h2>
                 <a>更多</a>
             </header>
             <ion-scroll class="section-content" scrollX="true" scrollY="false">
-                <div class="item" *ngFor="let subject of movieInTheaters?.subjects">
+                <div class="item" *ngFor="let subject of movieInTheaters?.subjects" tappable (click)="toMovieSubject(subject.id)">
+                    <div class="item-poster" [ngStyle]="{'background-image':'url(' + subject.images.medium + ')'}"></div>
+                    <span class="item-title">{{ subject.title }}</span>
+                    <div class="item-rating">
+                        <ion-icon name="star" [ngClass]="{'full': subject.rating.stars >= 1}"></ion-icon>
+                        <ion-icon name="star" [ngClass]="{'full': subject.rating.stars >= 2}"></ion-icon>
+                        <ion-icon name="star" [ngClass]="{'full': subject.rating.stars >= 3}"></ion-icon>
+                        <ion-icon name="star" [ngClass]="{'full': subject.rating.stars >= 4}"></ion-icon>
+                        <ion-icon name="star" [ngClass]="{'full': subject.rating.stars == 5}"></ion-icon>
+                        {{ subject.rating.average }}
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="total">
+                        <div>
+                            全部
+                        </div>
+                        <div class="divider"></div>
+                        <div class="font-size-10">
+                            {{ movieInTheaters?.total }}部
+                        </div>
+                    </div>
+                </div>
+            </ion-scroll>
+        </section>
+        <section class="margin-top-10" *ngIf="movieComingSoon">
+            <header>
+                <h2>即将上映</h2>
+                <a>更多</a>
+            </header>
+            <ion-scroll class="section-content" scrollX="true" scrollY="false">
+                <div class="item" *ngFor="let subject of movieComingSoon?.subjects" tappable (click)="toMovieSubject(subject.id)">
                     <div class="item-poster" [ngStyle]="{'background-image':'url(' + subject.images.medium + ')'}"></div>
                     <span class="item-title">{{ subject.title }}</span>
                     <div class="item-rating">
@@ -65,11 +96,11 @@
 
 </ion-content>
 
-<ion-scroll class="search-content" scrollX="false" scrollY="true" *ngIf="onFocusInput">
+<ion-scroll class="search-content-box" scrollX="false" scrollY="true" *ngIf="onFocusInput">
     <ion-list>
-        <ion-item *ngFor="let subject of movieInTheaters?.subjects; let i = index">
+        <button ion-item *ngFor="let subject of searchMovies?.subjects; let i = index" tappable (click)="toMovieSubject(subject.id)">
             <span item-start>{{ i + 1 }}</span>
             {{ subject.title }}
-        </ion-item>
+        </button>
     </ion-list>
 </ion-scroll>

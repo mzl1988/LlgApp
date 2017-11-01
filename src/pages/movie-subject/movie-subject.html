@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            {{ movieSubject?.title }}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <div class="cover-image-box">
+        <!-- <img src="./assets/images/p2500451074.jpg" alt=""> -->
+        <img [src]="movieSubject?.images.medium">
+    </div>
+</ion-content>

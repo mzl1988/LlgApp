@@ -1,7 +1,7 @@
 ## 电台
-<img src="https://github.com/mzl1988/LlgApp/blob/master/other/20170725161606.jpg" width="30vw" style="display:inline;">
-<img src="https://github.com/mzl1988/LlgApp/blob/master/other/20170725161608.jpg" width="30vw" style="display:inline;">
-<img src="https://github.com/mzl1988/LlgApp/blob/master/other/20170725161611.jpg" width="30vw" style="display:inline;">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio1.jpg" width="30%" style="display:inline;">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio2.jpg" width="30%" style="display:inline;">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio3.jpg" width="30%" style="display:inline;">
 
 #LlgApp
 

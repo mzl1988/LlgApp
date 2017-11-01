@@ -26,7 +26,7 @@ page-film {
         -webkit-transition: all 300ms ease;
         transition: all 300ms ease;
     }
-    .search-content {
+    .search-content-box {
         left: 0;
         right: 0;
         top:  77px;
@@ -45,8 +45,8 @@ page-film {
         background: color($colors, secondary) !important;
     }
     .swiper-pagination-bullet {
-        width: 5px;
-        height: 5px;
+        width: 3px;
+        height: 3px;
         background: #ffffff;
         opacity: .8;
         border-radius: 0;
