@@ -35,7 +35,6 @@ export class FilmPage {
     }
 
     ionViewDidLoad() {
-        this.getHotMovie();
         this.getMovieInTheaters();
     }
     onInput(event) {
@@ -55,22 +54,6 @@ export class FilmPage {
     }
     onBlur() {
     }
-
-    getHotMovie() {
-        this.testService.getHotMovie()
-        .finally(() => {
-        })
-        .subscribe(res => {
-            console.log(res);
-            
-        },
-        error => {
-            console.log(error);
-            
-        });
-    }
-
-    
 
     getMovieInTheaters() {
         // this.nativeService.toastShowWithOptions({

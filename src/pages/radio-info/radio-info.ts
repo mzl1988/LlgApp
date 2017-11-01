@@ -53,7 +53,7 @@ export class RadioInfoPage {
                 this.detail = res.result;
             }
             setTimeout(() => {
-                $('page-radio-info .scroll-content').css('padding-top', ($('.radio-info').height() + 45) + 'px');
+                $('page-radio-info .scroll-content').css('padding-top', ($('.radio-info').height() + 70) + 'px');
             }, 500)
         },
         error => {

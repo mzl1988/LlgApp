@@ -55,6 +55,12 @@ ionic
 $tabbar-border-color: rgba(0, 0, 0, 0.3);
 $border-color: #c8c7cc;
 .platform-android {
+    .ion-page {
+        ion-header {
+          padding-top: $cordova-md-statusbar-padding;
+          background-color: color($colors, secondary);
+        }
+      }
     .tabs-ios .tabbar {
         border-top: 0;
     }

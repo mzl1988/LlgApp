@@ -1,3 +1,8 @@
+## 电台:
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/20170725161606.jpg" width="30vw" style="display:inline;">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/20170725161608.jpg" width="30vw" style="display:inline;">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/20170725161611.jpg" width="30vw" style="display:inline;">
+
 #LlgApp
 
 Ionic 2 专注于以标准的 HTML 、 CSS 和 JavaScript 来构建移动站点，并可以通过 Cordova 打包成移动 App，只需编写一次代码，就可以分别部署到 iOS 、Android 等多种移动平台上。Ionic 2 与一代相比有较大的变化，基于最新的 Angular 2 (Angular 2 比Angular 1 快5到10倍)，使用 TypeScript进行开发
@@ -37,7 +42,7 @@ Navigation控制App内不同的页面间进行转换。Ionic的Navigation遵循�
 
 Ionic App支持主题风格。要改变主题，只需要调整src/theme/variables.scss文件中的$colors
 
-## plugin 安装
+## plugin 安装 https://cordova.apache.org/plugins/
 
 安装cordova插件的时候用ionic cordova plugin add ...的方式添加，这样会在package.json中添加这个插件的条目，如果有人clone了你的项目想在本地运行，可以用ionic state restore它会根据cordovaPlugins条目安装对应的插件。如果直接用cordova plugin add 安装则不会更新package.json。
 删除用 ionic cordova plugin remove

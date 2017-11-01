@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { NativeService } from '../providers/NativeService';
 import { JpushService } from '../providers/JpushService';
 import { BackButtonService } from '../providers/BackButtonService';
+import { ENV } from '../providers/Constants';
 
 @Component({
     templateUrl: 'app.html'
@@ -27,6 +28,8 @@ export class MyApp {
     ) {
         platform.ready().then(() => {
             splashScreen.hide();
+            statusBar.overlaysWebView(true);
+            statusBar.backgroundColorByHexString('#00ffffff');
             nativeService.getStorage('token').then((token) => {
                 if (token) {
                     // let loading = loadingCtrl.create({
@@ -50,7 +53,9 @@ export class MyApp {
                 }
             });
             // code push
-            nativeService.codePushReady();
+            if(ENV === 'prod') {
+                nativeService.codePushReady();
+            }
             this.listenToLoginEvents();
         });
     }

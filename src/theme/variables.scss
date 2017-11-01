@@ -46,6 +46,8 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 $range-ios-bar-background-color: rgba(255, 255, 255, 0.8);
+$alert-ios-button-text-color: color($colors, secondary);
+$tabs-ios-tab-color-active: color($colors, secondary);
 
 
 
@@ -53,6 +55,7 @@ $range-ios-bar-background-color: rgba(255, 255, 255, 0.8);
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
+$cordova-md-statusbar-padding: 25px;
 
 
 

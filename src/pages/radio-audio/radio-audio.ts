@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavParams, Slides } from 'ionic-angular';
+import { IonicPage, NavParams, Slides, App } from 'ionic-angular';
 import { NativeService } from '../../providers/NativeService';
 declare let $: any;
 import _ from 'lodash';
@@ -30,6 +30,7 @@ export class RadioAudioPage {
     saturation = 0;
     rangeTouch = false;
     constructor(
+        private appCtrl: App,
         nativeService: NativeService,
         navParams: NavParams
     ) {
@@ -49,6 +50,7 @@ export class RadioAudioPage {
     slideChanged() {
         this.audioIndex = this.slides.getActiveIndex();
         this.audio = this.audios[this.audioIndex];
+        this.appCtrl.setTitle(this.audio.audioName);
         $('page-radio-audio ion-content').backgroundBlur(this.audio.audioPic);
     }
 
