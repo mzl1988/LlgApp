@@ -6,9 +6,47 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content fullscreen>
-    <div class="cover-image-box">
-        <!-- <img src="./assets/images/p2500451074.jpg" alt=""> -->
-        <img [src]="movieSubject?.images.medium">
+<ion-content fullscreen style="background-image: url(./assets/images/p2500451074.jpg)" (ionScroll)="scrollHandler($event)">
+    <div class="movie-info" [ngStyle]="{'margin-top': - movieMarginTop + 'px', 'padding-top': movieMarginTop + 'px'}">
+        <ion-grid>
+            <ion-row>
+                <ion-col style="display: flex;align-items: left;justify-content: center;flex-direction: column;">
+                    <div style="padding: 0 10%;">
+                        <h4 class="margin-0">{{ movieSubject?.title }}</h4>
+                        <p class="margin-top-0" *ngIf="movieSubject?.aka">{{ movieSubject?.aka.length > 1 ? movieSubject?.aka[1] : movieSubject?.aka[0] }}</p>
+                        <p>{{ movieSubject?.genres }}</p>
+                        <p>{{ movieSubject?.countries }}</p>
+                        <div class="rating-box">
+                            <div class="info">
+                                <span class="pull-left">观众评</span>
+                                <span class="pull-right average-text">{{ movieSubject?.rating.average}}</span>
+                            </div>
+                            <div class="range">
+                                <div class="rgba">
+
+                                </div>
+                            </div>
+                            <div class="count">
+                                {{ movieSubject?.ratings_count_text }}
+                            </div>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col style="display: flex;align-items: flex-end;justify-content: center;">
+                    <img src="./assets/images/p2500451074.jpg" style="width: 80%">
+                </ion-col>
+            </ion-row>
+        </ion-grid>
     </div>
+    <section class="margin-top-10">
+        <header>
+            <h2>影院热映</h2>
+        </header>
+        <ion-scroll class="section-content" scrollX="true" scrollY="false">
+            <div class="item" *ngFor="let cast of movieSubject?.casts">
+                <div class="item-poster" [ngStyle]="{'background-image':'url(' + cast.avatars.medium + ')'}"></div>
+                <span class="item-title">{{ cast.name }}</span>
+            </div>
+        </ion-scroll>
+    </section>
 </ion-content>

@@ -27,9 +27,20 @@
     .margin-#{$size} {
         margin: 1px * $size !important;
     }
+    .padding-#{$size} {
+        padding: 1px * $size !important;
+    }
     .font-size-#{$size} {
         font-size: 1px * $size !important;
     }
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
 }
 
 
@@ -46,11 +57,7 @@ toast
 ionic
 *******************/
 
-.bar-button-default-ios,
-.bar-button-default.bar-button-ios-default,
-.bar-button-clear-ios-default {
-    color: color($colors, secondary);
-}
+
 // 在android中没0.4px, 以下是实现android中0.4px样式 start
 $tabbar-border-color: rgba(0, 0, 0, 0.3);
 $border-color: #c8c7cc;

@@ -44,7 +44,9 @@ export class MyApp {
                     this.rootPage = 'TabsPage';
                     this.events.publish('loginModal:dismiss', 'login');
                     // jpush
-                    this.initJpush();
+                    if (nativeService.isMobile()) {
+                        this.initJpush();
+                    }
                     // 检测网络
                     this.checkNetwork();
                 } else {
@@ -53,7 +55,7 @@ export class MyApp {
                 }
             });
             // code push
-            if(ENV === 'prod') {
+            if (ENV === 'prod' && nativeService.isMobile()) {
                 nativeService.codePushReady();
             }
             this.listenToLoginEvents();

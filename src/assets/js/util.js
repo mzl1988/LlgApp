@@ -1,0 +1,2 @@
+window.responseHandler = function(json) {
+}

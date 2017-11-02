@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content fullscreen>
-    <div *ngIf="!onFocusInput">
+    <div [hidden]="onFocusInput">
         <ion-slides [autoplay]="2000" [loop]="true" [pager]="true" [speed]="1500" (ionSlideTap)="slideTap()">
             <ion-slide>
                 <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M000001YCZlY3aBifi.jpg">

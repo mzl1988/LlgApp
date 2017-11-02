@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, IonicPage, Tabs } from 'ionic-angular';
 
 import { BackButtonService } from '../../providers/BackButtonService';
+import { NativeService } from '../../providers/NativeService';
 
 @IonicPage({
     priority: 'high'
@@ -15,6 +16,7 @@ export class TabsPage {
 
     constructor(
         backButtonService: BackButtonService,
+        nativeService: NativeService,
         platform: Platform
     ) {
         this.tabRoots = [
@@ -40,7 +42,9 @@ export class TabsPage {
             }
         ];
         platform.ready().then(() => {
-            backButtonService.registerBackButtonAction(this.tabRef);
+            if(nativeService.isAndroid()) {
+                backButtonService.registerBackButtonAction(this.tabRef);
+            }
         });
     }
 }
