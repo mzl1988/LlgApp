@@ -3,8 +3,8 @@ import { Platform, IonicPage, Events, ViewController } from 'ionic-angular';
 import { BackButtonService } from '../../providers/BackButtonService';
 import { Storage } from '@ionic/storage';
 
-import { User } from "../../models";
-import { UserService } from "../../services";
+import { User } from '../../models';
+import { UserService } from '../../services';
 import { NativeService } from '../../providers/NativeService';
 import 'rxjs/add/operator/finally';
 

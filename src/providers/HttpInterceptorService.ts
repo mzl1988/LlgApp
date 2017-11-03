@@ -69,7 +69,7 @@ export class HttpInterceptorService extends Http {
     catchErrors() {
         return (res: Response) => {
             if (res.status < 200 || res.status >= 300) {
-                let msg = this.status['status.'+res.status];
+                let msg = this.status['status.' + res.status];
             }
             return Observable.throw(res.json());
         };

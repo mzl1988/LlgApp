@@ -42,7 +42,7 @@ export class TabsPage {
             }
         ];
         platform.ready().then(() => {
-            if(nativeService.isAndroid()) {
+            if (nativeService.isAndroid()) {
                 backButtonService.registerBackButtonAction(this.tabRef);
             }
         });

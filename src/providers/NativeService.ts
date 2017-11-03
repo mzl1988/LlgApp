@@ -5,7 +5,7 @@ import { Network } from '@ionic-native/network';
 import { AppVersion } from '@ionic-native/app-version';
 import { Toast, ToastOptions } from '@ionic-native/toast';
 import { Storage } from '@ionic/storage';
-import { CODE_PUSH_DEPLOYMENT_KEY, ENV } from "./Constants";
+import { CODE_PUSH_DEPLOYMENT_KEY, ENV } from './Constants';
 
 @Injectable()
 export class NativeService {
@@ -59,7 +59,7 @@ export class NativeService {
      * @returns {boolean}
      */
     isConnecting(): boolean {
-        return this.getNetworkType() != 'none';
+        return this.getNetworkType() !== 'none';
     }
 
     /**

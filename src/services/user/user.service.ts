@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout';
 import { Http, Response } from '@angular/http';
 import { User } from '../../models/';
-import { APP_SERVE_URL } from "../../providers/Constants";
+import { APP_SERVE_URL } from '../../providers/Constants';
 
 @Injectable()
 export class UserService {

@@ -11,6 +11,8 @@ import { ENV } from '../providers/Constants';
 @Component({
     templateUrl: 'app.html'
 })
+
+// tslint:disable-next-line:component-class-suffix
 export class MyApp {
     rootPage: any;
     loginModal: any;

@@ -23,10 +23,10 @@ export class BackButtonService {
         // registerBackButtonAction是系统自带的方法
         this.platform.registerBackButtonAction(() => {
             if (this.keyboard.isOpen()) {
-                //按下返回键时，先关闭键盘
+                // 按下返回键时，先关闭键盘
                 this.keyboard.close();
                 return;
-            };
+            }
             // 获取NavController
             let activeNav: NavController = this.appCtrl.getActiveNav();
             // 如果可以返回上一页，则执行pop
@@ -61,7 +61,7 @@ export class BackButtonService {
                     textColor: '#ffffff'
                 }
             });
-            
+
             // 标记为true
             this.backButtonPressed = true;
             // 两秒后标记为false，如果退出的话，就不会执行了

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, App, Slides, NavController } from 'ionic-angular';
 import 'rxjs/add/operator/finally';
-import { TestService } from "../../services";
+import { TestService } from '../../services';
 import { NativeService } from '../../providers/NativeService';
 import _ from 'lodash';
 declare let $: any;
@@ -70,15 +70,15 @@ export class FilmPage {
 
     getHotMovie() {
         $.ajax({
-            type: "get", //jquey是不支持post方式跨域的
+            type: 'get', // jquey是不支持post方式跨域的
             async: false,
-            url: `https://api.douban.com/v2/movie/in_theaters`, //跨域请求的URL
-            dataType: "jsonp",
-            //传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
-            jsonp: "callback",
-            //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
-            jsonpCallback: "responseHandler",
-            //成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+            url: `https://api.douban.com/v2/movie/in_theaters`, // 跨域请求的URL
+            dataType: 'jsonp',
+            // 传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
+            jsonp: 'callback',
+            // 自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+            jsonpCallback: 'responseHandler',
+            // 成功获取跨域服务器上的json数据后,会动态执行这个callback函数
             success: (json) => {
                 this.movieInTheaters = json;
                 this.searchMovies = _.cloneDeep(json);
@@ -98,12 +98,12 @@ export class FilmPage {
 
     getComingSoonMovie() {
         $.ajax({
-            type: "get",
+            type: 'get',
             async: false,
             url: `https://api.douban.com/v2/movie/coming_soon`,
-            dataType: "jsonp",
-            jsonp: "callback",
-            jsonpCallback: "responseHandler",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'responseHandler',
             success: (json) => {
                 this.movieComingSoon = json;
                 this.movieComingSoon.subjects.forEach(subject => {
@@ -115,14 +115,14 @@ export class FilmPage {
 
     movieSearch() {
         $.ajax({
-            type: "get",
+            type: 'get',
             async: false,
             url: `https://api.douban.com/v2/movie/search?q=${this.searchText}`,
-            dataType: "jsonp",
-            jsonp: "callback",
-            jsonpCallback: "responseHandler",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'responseHandler',
             success: (json) => {
-                this.searchMovies = _.cloneDeep(json);   
+                this.searchMovies = _.cloneDeep(json);
                 $('page-film .search-content-box .scroll-content').scrollTop(0);
             }
         });

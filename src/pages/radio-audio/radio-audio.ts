@@ -64,10 +64,10 @@ export class RadioAudioPage {
     }
 
     touchStart() {
-        // console.log('1111111'); 
+        // console.log('1111111');
     }
     touchEnd() {
-        // console.log('2222222');       
+        // console.log('2222222');
     }
 
     rangeTouchStart() {
@@ -89,7 +89,7 @@ export class RadioAudioPage {
 
     findAudio() {
         this.audio = _.find(this.audios, { audioId: Number(this.id) });
-        this.audioPlayer = document.getElementById("audio-audio");
+        this.audioPlayer = document.getElementById('audio-audio');
         this.initEventListener();
         this.audioIndex = _.findIndex(this.audios, { audioId: Number(this.id) });
         setTimeout(() => {
@@ -156,7 +156,7 @@ export class RadioAudioPage {
     toPlay() {
         if (!this.hasError) {
             if (this.isPlay) {
-                this.audioPlayer.pause()
+                this.audioPlayer.pause();
             } else {
                 this.audioPlayer.play();
             }

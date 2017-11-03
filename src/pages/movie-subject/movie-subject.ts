@@ -46,12 +46,12 @@ export class MovieSubjectPage {
 
     getMovieSubject() {
         $.ajax({
-            type: "get",
+            type: 'get',
             async: false,
             url: `https://api.douban.com/v2/movie/subject/${this.id}`,
-            dataType: "jsonp",
-            jsonp: "callback",
-            jsonpCallback: "responseHandler",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'responseHandler',
             success: (json) => {
                 console.log(json);
                 this.movieSubject = json;
@@ -62,8 +62,8 @@ export class MovieSubjectPage {
                 }
                 this.movieSubject.ratingRgba = (this.movieSubject.rating.average / this.movieSubject.rating.max) * 100;
                 console.log(this.movieSubject.ratingRgba);
-                $('page-movie-subject .range .rgba').animate({'width': this.movieSubject.ratingRgba + '%'});
-                
+                $('page-movie-subject .range .rgba').animate({ 'width': this.movieSubject.ratingRgba + '%' });
+
             }
         });
     }

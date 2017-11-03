@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, App, NavController, Content } from 'ionic-angular';
 import 'rxjs/add/operator/finally';
-import { TestService } from "../../services";
+import { TestService } from '../../services';
 import { NativeService } from '../../providers/NativeService';
 
 declare let $: any;
