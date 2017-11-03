@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, App, NavController, NavParams } from 'ionic-angular';
 import 'rxjs/add/operator/finally';
-import { TestService } from "../../services";
+import { TestService } from '../../services';
 import { NativeService } from '../../providers/NativeService';
 declare let $: any;
 
@@ -24,6 +24,8 @@ export class RadioInfoPage {
     audios: any[] = [];
     loading = false;
     canLoading = true;
+    marginTop: number;
+
     constructor(
         private testService: TestService,
         private nativeService: NativeService,
@@ -31,13 +33,17 @@ export class RadioInfoPage {
         private navCtrl: NavController,
         navParams: NavParams
     ) {
-        this.id =navParams.data.id;
+        this.id = navParams.data.id;
     }
 
     ionViewDidEnter() {
     }
 
     ionViewDidLoad() {
+        setTimeout(() => {
+            this.marginTop = this.nativeService.isIos() ? $('page-radio-info ion-header').height() : $('page-radio-info ion-header').height() + 25;
+            $('page-radio-info .radio-info').css('top', `${this.marginTop}px`);
+        }, 200);
         this.getRadioDetail();
         setTimeout(() => {
             this.getAudioList(null);
@@ -46,18 +52,23 @@ export class RadioInfoPage {
 
     getRadioDetail() {
         this.testService.getRadioDetail(this.id)
-        .finally(() => {
-        })
-        .subscribe(res => {
-            if (res.code === '10000') {
-                this.detail = res.result;
-            }
-            setTimeout(() => {
-                $('page-radio-info .scroll-content').css('padding-top', ($('.radio-info').height() + 70) + 'px');
-            }, 500)
-        },
-        error => {
-        });
+            .finally(() => {
+            })
+            .subscribe(res => {
+                if (res.code === '10000') {
+                    this.detail = res.result;
+                }
+                setTimeout(() => {
+                    if (this.nativeService.isIos()) {
+                        $('page-radio-info .scroll-content').css('padding-top', ($('.radio-info').height() + this.marginTop - 1) + 'px');
+                    } else {
+                        $('page-radio-info .scroll-content').css('padding-top', ($('.radio-info').height() + this.marginTop) + 'px');
+                    }
+
+                }, 500);
+            },
+            error => {
+            });
     }
 
     getAudioList(infiniteScroll) {
@@ -68,7 +79,7 @@ export class RadioInfoPage {
         this.testService.getRadioAudioList(this.id, this.pagenum, this.pagesize)
             .finally(() => {
                 this.loading = false;
-                if(infiniteScroll) {
+                if (infiniteScroll) {
                     infiniteScroll.complete();
                 }
             })
@@ -85,7 +96,7 @@ export class RadioInfoPage {
             });
     }
 
-    doInfinite(infiniteScroll){
+    doInfinite(infiniteScroll) {
         this.getAudioList(infiniteScroll);
     }
 

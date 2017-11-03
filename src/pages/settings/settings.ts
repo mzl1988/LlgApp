@@ -16,7 +16,7 @@ export class SettingsPage {
         navParams: NavParams
     ) {
         console.log(navParams);
-        
+
     }
 
     ionViewDidLoad() {

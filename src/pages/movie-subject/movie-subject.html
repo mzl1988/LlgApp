@@ -6,12 +6,12 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content fullscreen style="background-image: url(./assets/images/p2500451074.jpg)" (ionScroll)="scrollHandler($event)">
+<ion-content fullscreen [ngStyle]="{'background-image':'url(' + movieSubject?.images.medium + ')'}" (ionScroll)="scrollHandler($event)">
     <div class="movie-info" [ngStyle]="{'margin-top': - movieMarginTop + 'px', 'padding-top': movieMarginTop + 'px'}">
         <ion-grid>
             <ion-row>
                 <ion-col style="display: flex;align-items: left;justify-content: center;flex-direction: column;">
-                    <div style="padding: 0 10%;">
+                    <div style="padding: 0 10%;" *ngIf="movieSubject">
                         <h4 class="margin-0">{{ movieSubject?.title }}</h4>
                         <p class="margin-top-0" *ngIf="movieSubject?.aka">{{ movieSubject?.aka.length > 1 ? movieSubject?.aka[1] : movieSubject?.aka[0] }}</p>
                         <p>{{ movieSubject?.genres }}</p>
@@ -32,21 +32,36 @@
                         </div>
                     </div>
                 </ion-col>
-                <ion-col style="display: flex;align-items: flex-end;justify-content: center;">
-                    <img src="./assets/images/p2500451074.jpg" style="width: 80%">
+                <ion-col style="display: flex;align-items: flex-end;justify-content: flex-end;">
+                    <img [src]="movieSubject?.images.medium" style="width: 60%; margin-right: 10%;">
                 </ion-col>
             </ion-row>
         </ion-grid>
     </div>
-    <section class="margin-top-10">
+    <div padding text-center style="background-color: #fff;" *ngIf="movieSubject">
+        <button ion-button color="secondary" outline style="width: 115px">想看 {{ movieSubject?.wish_count }}</button>
+        <button ion-button color="secondary" outline style="width: 115px">看过 {{ movieSubject?.collect_count }}</button>
+    </div>
+    <section class="padding-top-15">
         <header>
-            <h2>影院热映</h2>
+            <h2>剧情简介</h2>
+        </header>
+        <p class="summary">{{ movieSubject?.summary }}</p>
+    </section>
+    <section class="padding-top-15">
+        <header>
+            <h2>演职人员</h2>
         </header>
         <ion-scroll class="section-content" scrollX="true" scrollY="false">
+            <div class="item" *ngFor="let director of movieSubject?.directors">
+                <div class="item-poster" [ngStyle]="{'background-image':'url(' + director.avatars.medium + ')'}"></div>
+                <span class="item-title">{{ director.name }}</span>
+            </div>
             <div class="item" *ngFor="let cast of movieSubject?.casts">
                 <div class="item-poster" [ngStyle]="{'background-image':'url(' + cast.avatars.medium + ')'}"></div>
                 <span class="item-title">{{ cast.name }}</span>
             </div>
         </ion-scroll>
     </section>
+
 </ion-content>

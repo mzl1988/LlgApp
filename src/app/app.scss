@@ -35,6 +35,10 @@
     }
 }
 
+body {
+   position: inherit;
+}
+
 .pull-left {
     float: left;
 }

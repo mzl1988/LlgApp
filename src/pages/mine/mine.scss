@@ -1,11 +1,4 @@
 page-mine {
-    .header-ios .toolbar-ios:last-child .toolbar-background-ios:after {
-        border-bottom: 1px solid color($colors, secondary) !important;
-        color: color($colors, secondary) !important;
-    }
-    .header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios {
-        border-color: color($colors, secondary) !important;
-    }
     .user-pic {
         display: block;
         width: 65px !important;

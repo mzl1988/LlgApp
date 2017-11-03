@@ -29,9 +29,11 @@ export class RadioAudioPage {
     duration = 0;
     saturation = 0;
     rangeTouch = false;
+    marginTop: number;
+
     constructor(
         private appCtrl: App,
-        nativeService: NativeService,
+        private nativeService: NativeService,
         navParams: NavParams
     ) {
         this.id = navParams.data.id;
@@ -45,6 +47,12 @@ export class RadioAudioPage {
     }
 
     ionViewDidLoad() {
+        setTimeout(() => {
+            this.marginTop = this.nativeService.isIos() ? $('page-radio-info ion-header').height() : $('page-radio-info ion-header').height() + 25;
+            $('page-radio-audio .m-song-disc-after').css('top', `${this.marginTop}px`);
+            $('page-radio-audio ion-slides').css('top', `${this.marginTop}px`);
+            $('page-radio-audio .m-song-footer').css('top', `${($('page-radio-audio ion-slides').height() + this.marginTop)}px`);
+        }, 200);
     }
 
     slideChanged() {
