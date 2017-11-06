@@ -11,6 +11,7 @@ export class BackButtonService {
     // 构造函数 依赖注入
     constructor(public platform: Platform,
         private appCtrl: App,
+        // private ionicApp: IonicApp,
         private keyboard: Keyboard,
         private nativeService: NativeService
     ) { }
@@ -22,11 +23,18 @@ export class BackButtonService {
         }
         // registerBackButtonAction是系统自带的方法
         this.platform.registerBackButtonAction(() => {
+            // 按下返回键时，先关闭键盘
             if (this.keyboard.isOpen()) {
-                // 按下返回键时，先关闭键盘
                 this.keyboard.close();
                 return;
             }
+            // 按下返回键时，先关闭 modal
+            // let activePortal = this.ionicApp._modalPortal.getActive();
+            // if (activePortal) {
+            //     activePortal.dismiss().catch(() => { });
+            //     activePortal.onDidDismiss(() => { });
+            //     return;
+            // }
             // 获取NavController
             let activeNav: NavController = this.appCtrl.getActiveNav();
             // 如果可以返回上一页，则执行pop

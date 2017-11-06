@@ -6,12 +6,13 @@
     </ion-navbar>
 </ion-header>
 
+<!-- <ion-content fullscreen Style="background-image: url(./assets/images/p2500451074.jpg)" (ionScroll)="scrollHandler($event)"> -->
 <ion-content fullscreen [ngStyle]="{'background-image':'url(' + movieSubject?.images.medium + ')'}" (ionScroll)="scrollHandler($event)">
     <div class="movie-info" [ngStyle]="{'margin-top': - movieMarginTop + 'px', 'padding-top': movieMarginTop + 'px'}">
-        <ion-grid>
+        <ion-grid *ngIf="movieSubject">
             <ion-row>
                 <ion-col style="display: flex;align-items: left;justify-content: center;flex-direction: column;">
-                    <div style="padding: 0 10%;" *ngIf="movieSubject">
+                    <div style="padding: 0 10%;">
                         <h4 class="margin-0">{{ movieSubject?.title }}</h4>
                         <p class="margin-top-0" *ngIf="movieSubject?.aka">{{ movieSubject?.aka.length > 1 ? movieSubject?.aka[1] : movieSubject?.aka[0] }}</p>
                         <p>{{ movieSubject?.genres }}</p>
