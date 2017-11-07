@@ -479,3 +479,9 @@ $border-color: #c8c7cc;
 }
 
 // 黑胶唱片机 start
+
+.dplayer.dplayer-hide-controller .dplayer-controller, .dplayer.dplayer-hide-controller .dplayer-controller-mask {
+    opacity: 1 !important;
+    -webkit-transform: translateY(90%) !important;
+    transform: translateY(90%) !important;
+}

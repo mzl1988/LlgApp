@@ -16,6 +16,7 @@ import { Toast } from '@ionic-native/toast';
 import { IonicStorageModule } from '@ionic/storage';
 import { Network } from '@ionic-native/network';
 import { AppVersion } from '@ionic-native/app-version';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import { AppVersion } from '@ionic-native/app-version';
         Toast,
         Network,
         AppVersion,
+        ScreenOrientation,
         {
             provide: Http,
             useClass: HttpInterceptorService

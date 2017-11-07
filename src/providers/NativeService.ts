@@ -94,16 +94,16 @@ export class NativeService {
             return;
         }
         let deploymentKey = '';
-        if (this.isAndroid() && ENV !== 'prod') {
+        if (this.isAndroid() && String(ENV) !== 'prod') {
             deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.android.Staging;
         }
-        if (this.isAndroid() && ENV === 'prod') {
+        if (this.isAndroid() && String(ENV) === 'prod') {
             deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.android.Production;
         }
-        if (this.isIos() && ENV !== 'prod') {
+        if (this.isIos() && String(ENV) !== 'prod') {
             deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.ios.Staging;
         }
-        if (this.isIos() && ENV === 'prod') {
+        if (this.isIos() && String(ENV) === 'prod') {
             deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.ios.Production;
         }
         this.codePush.sync({

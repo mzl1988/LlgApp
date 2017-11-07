@@ -57,7 +57,7 @@ export class MyApp {
                 }
             });
             // code push
-            if (ENV === 'prod' && nativeService.isMobile()) {
+            if (String(ENV) === 'prod' && nativeService.isMobile()) {
                 nativeService.codePushReady();
             }
             this.listenToLoginEvents();

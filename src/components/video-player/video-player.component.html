@@ -1,0 +1,27 @@
+<div id="{{videoConfig.id}}" class="video-player" (touchstart)="touchStart()" (touchend)="touchEnd()">
+    <div class="video-player-wrap">
+        <video class="video-current" [poster]="videoConfig.poster" [src]="videoConfig.src" muted webkit-playsinline playsinline preload="auto">
+
+        </video>
+    </div>
+    <div class="video-player-controller">
+        <ion-range min="0" [max]="duration" [(ngModel)]="saturation" color="secondary" (ionFocus)="rangeTouchStart()" (ionBlur)="rangeTouchEnd()" class="range-md">
+        </ion-range>
+        <div class="video-player-icons-left">
+            <button type="button" tappable (click)="toPlay()">
+                <ion-icon class="icon icon-ios ion-ios-play" *ngIf="!isPlay"></ion-icon>
+                <ion-icon class="icon icon-ios ion-ios-pause" *ngIf="isPlay"></ion-icon>
+            </button>
+            <span class="video-time">
+                <span class="dplayer-ptime">{{ currentTime }}</span> /
+                <span class="dplayer-dtime">{{ totalTime }}</span>
+            </span>
+        </div>
+        <div class="video-player-icons-right">
+            <button type="button">
+                <ion-icon class="icon icon-ios ion-ios-expand"></ion-icon>
+                <!-- <ion-icon class="icon icon-ios ion-ios-contract"></ion-icon> -->
+            </button>
+        </div>
+    </div>
+</div>

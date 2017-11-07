@@ -15,6 +15,7 @@ declare let enableInlineVideo: any;
     templateUrl: 'settings.html'
 })
 export class SettingsPage {
+    dPlayer: any;
 
     constructor(
         navParams: NavParams,
@@ -25,7 +26,7 @@ export class SettingsPage {
     }
 
     ionViewDidLoad() {
-        let dp = new DPlayer({
+        this.dPlayer = new DPlayer({
             container: document.getElementById('dplayer'),
             video: {
                 url: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
@@ -36,12 +37,17 @@ export class SettingsPage {
             iconsColor: '#42bd56'
         });
         setTimeout(() => {
+            $('#dplayer .dplayer-setting').remove();
             $('#dplayer button.dplayer-full-icon').remove();
             // 解决 ios 不能自动播放和禁止播放自动进入全屏
             if (this.nativeService.isIos()) {
                 enableInlineVideo(document.getElementById('dplayer').getElementsByClassName('dplayer-video')[0]);
             }
-            dp.play();
+            this.dPlayer.play();
         }, 200);
+    }
+
+    ionViewWillUnload() {
+        this.dPlayer.destroy();
     }
 }

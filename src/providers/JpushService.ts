@@ -19,10 +19,10 @@ export class JpushService {
             return;
         }
         window['plugins'].jPushPlugin.init();
-        if (this.nativeService.isIos() && ENV !== 'prod') {
+        if (this.nativeService.isIos() && String(ENV) !== 'prod') {
             window['plugins'].jPushPlugin.setDebugModeFromIos();
         }
-        if (this.nativeService.isAndroid() && ENV !== 'prod') {
+        if (this.nativeService.isAndroid() && String(ENV) !== 'prod') {
             window['plugins'].jPushPlugin.setDebugMode(false);
         }
 

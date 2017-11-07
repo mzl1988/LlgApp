@@ -770,7 +770,7 @@ button[data-balloon] {
     left: 0;
     right: 0;
     height: 41px;
-    padding: 0 20px;
+    padding: 0 10px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -790,7 +790,7 @@ button[data-balloon] {
     cursor: pointer;
     position: absolute;
     bottom: 33px;
-    width: calc(100% - 40px);
+    width: calc(100% - 20px);
     height: 3px
 }
 
@@ -843,7 +843,7 @@ button[data-balloon] {
     position: relative;
     height: 3px;
     width: 100%;
-    background: hsla(0, 0%, 100%, .2);
+    background: hsla(0, 0%, 100%, .4);
     cursor: pointer!important
 }
 
@@ -852,7 +852,7 @@ button[data-balloon] {
     left: 0;
     top: 0;
     bottom: 0;
-    background: hsla(0, 0%, 100%, .4);
+    background: hsla(0, 0%, 100%, .8);
     height: 3px;
     -webkit-transition: all .5s ease;
     transition: all .5s ease;

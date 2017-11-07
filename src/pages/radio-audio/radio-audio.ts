@@ -118,13 +118,13 @@ export class RadioAudioPage {
         this.audioPlayer.onloadeddata = () => {
             console.log('$$$ audioElement::loadeddata');
         };
-        this.audioPlayer.oncanplay = () => {
+        this.audioPlayer.ondurationchange = () => {
             this.hasError = false;
             this.seeking = false;
             this.audioPlayer.play();
             this.duration = Math.floor(this.audioPlayer.duration);
             this.totalTime = Math.floor(this.duration / 60) + ':' + Math.floor(this.duration % 60);
-            console.log('$$$ audioElement::canplay');
+            console.log('$$$ audioElement::durationchange');
         };
         this.audioPlayer.onplaying = () => {
             console.log('$$$ audioElement::playing');

@@ -12,6 +12,13 @@ import 'rxjs/add/operator/finally';
     templateUrl: 'music.html'
 })
 export class MusicPage {
+    videoConfig = {
+        id: 'player_1',
+        autoplay: true,
+        poster: 'http://www.mediaelementjs.com/images/big_buck_bunny.jpg',
+        src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4'
+    };
+
     constructor(
         private appCtrl: App
     ) {
