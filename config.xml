@@ -95,8 +95,6 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
-    <allow-navigation href="http://192.168.56.1:6228" />
-    <allow-navigation href="http://192.168.10.113:6228" />
     <engine name="android" spec="^6.2.3" />
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
     <plugin name="cordova-plugin-code-push" spec="^1.9.8-beta" />

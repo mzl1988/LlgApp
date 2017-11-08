@@ -13,6 +13,7 @@ import 'rxjs/add/operator/finally';
 })
 export class MusicPage {
     videoConfig = {
+        page: 'page-music',
         id: 'player_1',
         autoplay: true,
         poster: 'http://www.mediaelementjs.com/images/big_buck_bunny.jpg',

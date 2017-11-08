@@ -20,6 +20,9 @@ export class VideoPlayerComponent implements OnChanges {
     rangeTouch = false;
     seeking = false;
     touch_end: any;
+    lastPlayPos = 0;
+    currentPlayPos = 0;
+    checkLoading: any;
 
     constructor(
         private nativeService: NativeService
@@ -45,6 +48,27 @@ export class VideoPlayerComponent implements OnChanges {
         }
     }
 
+    setCheckLoadingTime() {
+        this.checkLoading = setInterval(() => {
+            this.currentPlayPos = this.player.currentTime;
+            if (!this.seeking
+                && this.currentPlayPos === this.lastPlayPos
+                && !this.player.paused) {
+                this.seeking = true;
+            }
+            if (this.seeking
+                && this.currentPlayPos > this.lastPlayPos
+                && !this.player.paused) {
+                this.seeking = false;
+            }
+            this.lastPlayPos = this.currentPlayPos;
+        }, 100);
+    }
+
+    clearCheckLoadingTime() {
+        clearInterval(this.checkLoading);
+    }
+
     addVideoListeners() {
         this.player.onloadstart = () => {
             console.log('$$$ videoElement::loadstart');
@@ -54,21 +78,21 @@ export class VideoPlayerComponent implements OnChanges {
             console.log('$$$ videoElement::loadeddata');
         };
 
-        this.player.onwaiting = () => {
-            this.seeking = true;
-            console.log('$$$ videoElement::waiting');
-        };
+        // this.player.onwaiting = () => {
+        //     this.seeking = true;
+        //     console.log('$$$ videoElement::waiting');
+        // };
 
-        this.player.oncanplay = () => {
-            this.seeking = false;
-            console.log('$$$ audioElement::canplay');
-        };
+        // this.player.oncanplay = () => {
+        //     this.seeking = false;
+        //     console.log('$$$ videoElement::canplay');
+        // };
 
         this.player.ondurationchange = () => {
             this.hasError = false;
             this.duration = Math.floor(this.player.duration);
             this.totalTime = Math.floor(this.duration / 60) + ':' + Math.floor(this.duration % 60);
-            console.log('$$$ audioElement::durationchange');
+            console.log('$$$ videoElement::durationchange');
         };
 
         this.player.ontimeupdate = () => {
@@ -81,17 +105,23 @@ export class VideoPlayerComponent implements OnChanges {
         this.player.onplaying = () => {
             console.log('$$$ videoElement::playing');
             this.isPlay = true;
+            this.clearCheckLoadingTime();
+            this.setCheckLoadingTime();
         };
 
         this.player.onpause = () => {
             console.log('$$$ videoElement::pause');
             this.isPlay = false;
+            this.clearCheckLoadingTime();
+            this.setCheckLoadingTime();
         };
 
         // 播放结束
         this.player.onended = () => {
             console.log('$$$ videoElement::播放结束');
             this.isPlay = false;
+            this.seeking = false;
+            this.clearCheckLoadingTime();
         };
         // 网速失速
         this.player.onstalled = () => {
@@ -101,11 +131,15 @@ export class VideoPlayerComponent implements OnChanges {
         this.player.onabort = () => {
             console.log('$$$ videoElement::abort');
             this.isPlay = false;
+            this.seeking = false;
+            this.clearCheckLoadingTime();
         };
         // 请求数据时遇到错误
         this.player.onerror = () => {
             console.log('$$$ videoElement::error');
             this.isPlay = false;
+            this.seeking = false;
+            this.clearCheckLoadingTime();
             this.hasError = true;
         };
     }
@@ -142,6 +176,4 @@ export class VideoPlayerComponent implements OnChanges {
             this.player.currentTime = this.saturation;
         }, 1000);
     }
-
-
 }

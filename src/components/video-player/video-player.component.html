@@ -8,7 +8,7 @@
         <ion-range min="0" [max]="duration" [(ngModel)]="saturation" color="secondary" (ionFocus)="rangeTouchStart()" (ionBlur)="rangeTouchEnd()" class="range-md">
         </ion-range>
         <div class="video-player-icons-left">
-            <button type="button" tappable (click)="toPlay()">
+            <button type="button" [disabled]="seeking" tappable (click)="toPlay()">
                 <ion-icon class="icon icon-ios ion-ios-play" *ngIf="!isPlay"></ion-icon>
                 <ion-icon class="icon icon-ios ion-ios-pause" *ngIf="isPlay"></ion-icon>
             </button>
@@ -22,6 +22,11 @@
                 <ion-icon class="icon icon-ios ion-ios-expand"></ion-icon>
                 <!-- <ion-icon class="icon icon-ios ion-ios-contract"></ion-icon> -->
             </button>
+        </div>
+    </div>
+    <div class="spinner-circles-box" *ngIf="seeking">
+        <div class="cp-spinner cp-round">
+            
         </div>
     </div>
 </div>

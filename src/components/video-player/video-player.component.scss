@@ -98,9 +98,70 @@ page-video-player {
             font-size: 25px;
             text-align: center;
         }
-
         button.activated {
             background: rgba(66, 189, 86, 0.2);
+        }
+    }
+    .spinner-circles-box {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 50%;
+        left: 50%;
+        margin-top: -25px;
+        margin-left: -25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .cp-spinner {
+            width: 35px;
+            height: 35px;
+            display: inline-block;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .cp-round:before {
+            border-radius: 50%;
+            content: " ";
+            width: 35px;
+            height: 35px;
+            display: inline-block;
+            box-sizing: border-box;
+            border-top: solid 4px rgba(255, 255, 255, 0.5);
+            border-right: solid 4px rgba(255, 255, 255, 0.5);
+            border-bottom: solid 4px rgba(255, 255, 255, 0.5);
+            border-left: solid 4px rgba(255, 255, 255, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .cp-round:after {
+            border-radius: 50%;
+            content: " ";
+            width: 35px;
+            height: 35px;
+            display: inline-block;
+            box-sizing: border-box;
+            border-top: solid 4px color($colors, secondary);;
+            border-right: solid 4px transparent;
+            border-bottom: solid 4px transparent;
+            border-left: solid 4px transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: cp-round-animate 1s ease-in-out infinite;
+        }
+
+        @keyframes cp-round-animate {
+            0% {
+                transform: rotate(0)
+            }
+            100% {
+                transform: rotate(360deg)
+            }
         }
     }
 }

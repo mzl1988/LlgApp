@@ -48,6 +48,7 @@ $colors: (
 $range-ios-bar-background-color: rgba(255, 255, 255, 0.8);
 $alert-ios-button-text-color: color($colors, secondary);
 $tabs-ios-tab-color-active: color($colors, secondary);
+$spinner-ios-circles-color: color($colors, secondary);
 
 
 
@@ -56,6 +57,7 @@ $tabs-ios-tab-color-active: color($colors, secondary);
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 $cordova-md-statusbar-padding: 25px;
+$spinner-md-circles-color: color($colors, secondary);
 
 
 
