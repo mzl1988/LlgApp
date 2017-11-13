@@ -3,7 +3,7 @@
     <name>LLG</name>
     <description>LLG个人</description>
     <author email="634390243@qq.com" href="https://mzl1988.github.io/">LLG个人</author>
-    <content original-src="index.html" src="http://192.168.10.113:6228" />
+    <content original-src="index.html"/>
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

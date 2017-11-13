@@ -25,9 +25,7 @@ export class MinePage {
     }
 
     toSettingsPage() {
-        this.navCtrl.push('SettingsPage', {
-            'id': 1
-        });
+        this.navCtrl.push('SettingsPage');
     }
     toAboutPage() {
         this.navCtrl.push('AboutPage');

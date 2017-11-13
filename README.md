@@ -1,7 +1,17 @@
 ## 电台
-<img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio1.jpg" width="30%">
-<img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio2.jpg" width="30%">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie1.jpg" width="30%">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie2.jpg" width="30%">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie3.jpg" width="30%">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie4.png" width="30%">
+
+## 电台
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio1.png" width="30%">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio2.png" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio3.jpg" width="30%">
+
+## video 组件
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/video1.jpg" width="30%">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/video2.png" width="30%">
 
 #LlgApp
 

@@ -1,4 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { StatusBar } from '@ionic-native/status-bar';
 import { NativeService } from '../../providers/NativeService';
 import * as _ from 'lodash';
 declare let $: any;
@@ -15,7 +17,7 @@ export class VideoPlayerComponent implements OnChanges {
     currentTime = '00';
     totalTime = '00';
     hasError = false;
-    duration = 0;
+    duration = 100;
     saturation = 0;
     rangeTouch = false;
     seeking = false;
@@ -23,18 +25,20 @@ export class VideoPlayerComponent implements OnChanges {
     lastPlayPos = 0;
     currentPlayPos = 0;
     checkLoading: any;
+    fulled = false;
+    scrollTop: number;
 
     constructor(
-        private nativeService: NativeService
+        private nativeService: NativeService,
+        private statusBar: StatusBar,
+        private screenOrientation: ScreenOrientation
     ) {
     }
 
     ngOnChanges() {
-        this.videoConfig = this.videoConfig;
         setTimeout(() => {
             this.initVideo();
         }, 200);
-
     }
 
     initVideo() {
@@ -42,6 +46,9 @@ export class VideoPlayerComponent implements OnChanges {
             enableInlineVideo(document.getElementById(this.videoConfig.id).getElementsByClassName('video-current')[0]);
         }
         this.player = document.getElementById(this.videoConfig.id).getElementsByClassName('video-current')[0];
+        this.touch_end = setTimeout(() => {
+            $(`#${this.videoConfig.id} .video-player-controller`).animate({ bottom: '-50px' });
+        }, 4000);
         this.addVideoListeners();
         if (this.videoConfig.autoplay) {
             this.player.play();
@@ -151,7 +158,7 @@ export class VideoPlayerComponent implements OnChanges {
     touchEnd() {
         this.touch_end = setTimeout(() => {
             $(`#${this.videoConfig.id} .video-player-controller`).animate({ bottom: '-50px' });
-        }, 5000);
+        }, 2000);
     }
 
     toPlay() {
@@ -175,5 +182,46 @@ export class VideoPlayerComponent implements OnChanges {
             this.rangeTouch = false;
             this.player.currentTime = this.saturation;
         }, 1000);
+    }
+
+    toFull() {
+        if (!this.fulled) {
+            let scroll = $(`${this.videoConfig.page} .scroll-content`)[0];
+            this.scrollTop = scroll.scrollTop;
+            $(`${this.videoConfig.page} ion-header`).hide();
+            $(`.ios .tabs .tabbar`).hide();
+            this.fulled = true;
+            if (this.nativeService.isMobile()) {
+                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+                setTimeout(() => {
+                    this.statusBar.show();
+                    this.statusBar.overlaysWebView(true);
+                }, 200);
+            }
+            $(`${this.videoConfig.page} #${this.videoConfig.id}`).animate({
+                'z-index': 100000,
+                'left': 0,
+                'top': 0,
+                'width': '100%',
+                'height': '100%',
+            }).css({ 'position': 'fixed' });
+        } else {
+            $(`${this.videoConfig.page} #${this.videoConfig.id}`).removeAttr('style');
+            $(`${this.videoConfig.page} ion-header`).show();
+            $(`.ios .tabs .tabbar`).show();
+            this.fulled = false;
+            if (this.nativeService.isMobile()) {
+                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+                setTimeout(() => {
+                    this.statusBar.show();
+                    this.statusBar.overlaysWebView(true);
+                }, 200);
+            }
+            setTimeout(() => {
+                let scroll = $(`${this.videoConfig.page} .scroll-content`)[0];
+                $(scroll).scrollTop(this.scrollTop);
+            }, 200);
+        }
+
     }
 }

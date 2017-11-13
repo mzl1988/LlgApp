@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform, LoadingController, ModalController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { NativeService } from '../providers/NativeService';
 import { JpushService } from '../providers/JpushService';
@@ -26,10 +27,14 @@ export class MyApp {
         backButtonService: BackButtonService,
         loadingCtrl: LoadingController,
         private modalCtrl: ModalController,
-        private events: Events
+        private events: Events,
+        screenOrientation: ScreenOrientation
     ) {
         platform.ready().then(() => {
             splashScreen.hide();
+            if (this.nativeService.isMobile()) {
+                screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
+            }
             statusBar.overlaysWebView(true);
             statusBar.backgroundColorByHexString('#00ffffff');
             nativeService.getStorage('token').then((token) => {

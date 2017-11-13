@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Platform, App, NavController, Tabs, Keyboard } from 'ionic-angular';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { NativeService } from './NativeService';
 
 @Injectable()
@@ -13,7 +14,8 @@ export class BackButtonService {
         private appCtrl: App,
         // private ionicApp: IonicApp,
         private keyboard: Keyboard,
-        private nativeService: NativeService
+        private nativeService: NativeService,
+        private screenOrientation: ScreenOrientation
     ) { }
 
     // 注册方法
@@ -21,8 +23,17 @@ export class BackButtonService {
         if (this.platform.is('ios')) {
             return;
         }
+
         // registerBackButtonAction是系统自带的方法
         this.platform.registerBackButtonAction(() => {
+            if (this.screenOrientation.type === 'landscape-primary') {
+                this.nativeService.toastShowWithOptions({
+                    message: '请先退出全屏',
+                    duration: 2000,
+                    position: 'center'
+                });
+                return;
+            }
             // 按下返回键时，先关闭键盘
             if (this.keyboard.isOpen()) {
                 this.keyboard.close();

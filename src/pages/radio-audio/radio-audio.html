@@ -31,7 +31,7 @@
         <ion-grid>
             <ion-row>
                 <ion-col>
-                    <ion-range min="0" [max]="duration" [(ngModel)]="saturation" color="secondary" (ionFocus)="rangeTouchStart()" (ionBlur)="rangeTouchEnd()" (ionChange)="rangeChange()">
+                    <ion-range min="0" [max]="duration" [(ngModel)]="saturation" color="secondary" (ionFocus)="rangeTouchStart()" (ionBlur)="rangeTouchEnd()" (ionChange)="rangeChange()" class="range-md">
                         <ion-label range-left color="secondary">{{ currentTime }}</ion-label>
                         <ion-label range-right color="secondary">{{ totalTime }}</ion-label>
                     </ion-range>

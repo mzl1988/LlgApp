@@ -1,4 +1,15 @@
 page-radio-audio {
+    .range-md .range-bar {
+        background: rgba(255, 255, 255, 0.4);
+    }
+    .range-md .range-bar-active {
+        bottom: 0;
+        width: auto;
+        background: color($colors, secondary);
+    }
+    .range-md .range-knob {
+        background: color($colors, secondary);
+    }
     ion-header {
         background-color: transparent !important;
     }
