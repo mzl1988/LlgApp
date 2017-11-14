@@ -54,6 +54,7 @@ export class VideoPlayerComponent implements OnChanges, OnDestroy {
             enableInlineVideo(document.getElementById(this.videoConfig.id).getElementsByClassName('video-current')[0]);
         }
         this.player = document.getElementById(this.videoConfig.id).getElementsByClassName('video-current')[0];
+        this.player.muted = false;
         this.touch_end = setTimeout(() => {
             $(`#${this.videoConfig.id} .video-player-controller`).animate({ bottom: '-44px' });
         }, 4000);

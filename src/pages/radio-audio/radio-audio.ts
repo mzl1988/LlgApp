@@ -60,7 +60,7 @@ export class RadioAudioPage {
             $('page-radio-audio .m-song-disc-after').css('top', `0px`);
             $('page-radio-audio ion-slides').css('top', `0px`);
             $('page-radio-audio .m-song-footer').css('top', `${($('page-radio-audio ion-slides').height())}px`);
-        }, 200);
+        }, 500);
     }
 
     slideChanged() {
@@ -110,7 +110,7 @@ export class RadioAudioPage {
         this.audioIndex = _.findIndex(this.audios, { audioId: Number(this.id) });
         setTimeout(() => {
             this.slides.slideTo(this.audioIndex, 0);
-        }, 200);
+        }, 500);
         $('page-radio-audio ion-content').backgroundBlur({
             imageURL: this.audio.audioPic,
             blurAmount: 10
