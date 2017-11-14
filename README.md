@@ -1,6 +1,7 @@
 # 可预览android版本apk
-[点击下载apk](https://github.com/mzl1988/LlgApp/blob/master/other/Llg.apk)
-[点击下载兼容版本apk](https://github.com/mzl1988/LlgApp/blob/master/other/Llg-crosswalk.apk)
+[点击下载apk](https://github.com/mzl1988/LlgApp/raw/master/other/Llg.apk)
+
+[点击下载兼容版本apk](https://github.com/mzl1988/LlgApp/raw/master/other/Llg-crosswalk.apk)
 
 # 电台
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie1.jpg" width="30%">
