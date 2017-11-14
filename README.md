@@ -3,7 +3,7 @@
 
 [点击下载兼容版本apk](https://github.com/mzl1988/LlgApp/raw/master/other/Llg-crosswalk.apk)
 
-# 电台
+# 电影
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie1.jpg" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie2.jpg" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie3.jpg" width="30%">
