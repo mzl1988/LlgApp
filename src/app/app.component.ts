@@ -30,13 +30,15 @@ export class MyApp {
         private events: Events,
         screenOrientation: ScreenOrientation
     ) {
+        // statusBar.overlaysWebView 在 platform.ready 后执行经常不生效提前执行一次吧
+        statusBar.overlaysWebView(true);
         platform.ready().then(() => {
             splashScreen.hide();
+            statusBar.overlaysWebView(true);
+            statusBar.backgroundColorByHexString('#00ffffff');
             if (this.nativeService.isMobile()) {
                 screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
             }
-            statusBar.overlaysWebView(true);
-            statusBar.backgroundColorByHexString('#00ffffff');
             nativeService.getStorage('token').then((token) => {
                 if (token) {
                     // let loading = loadingCtrl.create({

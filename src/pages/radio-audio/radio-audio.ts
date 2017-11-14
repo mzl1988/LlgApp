@@ -36,7 +36,7 @@ export class RadioAudioPage {
         private nativeService: NativeService,
         navParams: NavParams
     ) {
-        this.id = navParams.data.id;
+        this.id = Number(navParams.data.id);
         nativeService.getStorage('audios').then((audios) => {
             if (audios) {
                 this.audios = audios;
@@ -46,12 +46,20 @@ export class RadioAudioPage {
 
     }
 
+    ionViewWillLeave() {
+        if (this.audioPlayer) {
+            this.audioPlayer.pause();
+            this.audioPlayer.src = '';
+            this.audioPlayer.load();
+        }
+    }
+
     ionViewDidLoad() {
         setTimeout(() => {
             this.marginTop = this.nativeService.isIos() ? $('page-radio-info ion-header').height() : $('page-radio-info ion-header').height() + 25;
-            $('page-radio-audio .m-song-disc-after').css('top', `${this.marginTop}px`);
-            $('page-radio-audio ion-slides').css('top', `${this.marginTop}px`);
-            $('page-radio-audio .m-song-footer').css('top', `${($('page-radio-audio ion-slides').height() + this.marginTop)}px`);
+            $('page-radio-audio .m-song-disc-after').css('top', `0px`);
+            $('page-radio-audio ion-slides').css('top', `0px`);
+            $('page-radio-audio .m-song-footer').css('top', `${($('page-radio-audio ion-slides').height())}px`);
         }, 200);
     }
 
@@ -96,13 +104,13 @@ export class RadioAudioPage {
     }
 
     findAudio() {
-        this.audio = _.find(this.audios, { audioId: Number(this.id) });
+        this.audio = _.find(this.audios, { audioId: this.id });
         this.audioPlayer = document.getElementById('audio-audio');
         this.initEventListener();
         this.audioIndex = _.findIndex(this.audios, { audioId: Number(this.id) });
         setTimeout(() => {
             this.slides.slideTo(this.audioIndex, 0);
-        }, 500);
+        }, 200);
         $('page-radio-audio ion-content').backgroundBlur({
             imageURL: this.audio.audioPic,
             blurAmount: 10

@@ -37,6 +37,11 @@ export class RadioInfoPage {
     }
 
     ionViewDidEnter() {
+        $('page-radio-info ion-list').show();
+    }
+
+    ionViewWillLeave () {
+        $('page-radio-info ion-list').hide();
     }
 
     ionViewDidLoad() {
@@ -47,7 +52,7 @@ export class RadioInfoPage {
         this.getRadioDetail();
         setTimeout(() => {
             this.getAudioList(null);
-        }, 500);
+        }, 300);
     }
 
     getRadioDetail() {
@@ -64,8 +69,7 @@ export class RadioInfoPage {
                     } else {
                         $('page-radio-info .scroll-content').css('padding-top', ($('.radio-info').height() + this.marginTop) + 'px');
                     }
-
-                }, 500);
+                }, 300);
             },
             error => {
             });

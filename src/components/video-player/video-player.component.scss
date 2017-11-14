@@ -38,17 +38,17 @@ page-video-player {
         bottom: 0;
         left: 0;
         right: 0;
-        height: 80px;
+        height: 73px;
         padding: 0;
         transition: all .3s ease;
         user-select: none;
     }
     .video-player-icons-left {
-        height: 56px;
+        height: 49px;
         position: absolute;
         bottom: 0;
         button {
-            width: 56px;
+            width: 49px;
             height: 100%;
             border: none;
             background-color: transparent;
@@ -59,7 +59,7 @@ page-video-player {
             display: flex;
             justify-content: center;
             color: color($colors, secondary);
-            font-size: 25px;
+            font-size: 23px;
             text-align: center;
         }
         button.activated {
@@ -68,9 +68,9 @@ page-video-player {
         .video-time {
             position: absolute;
             top: 0;
-            left: 56px;
+            left: 49px;
             width: 100px;
-            line-height: 56px;
+            line-height: 49px;
             color: #eee;
             text-shadow: 0 0 2px rgba(0, 0, 0, .5);
             vertical-align: middle;
@@ -79,12 +79,12 @@ page-video-player {
         }
     }
     .video-player-icons-right {
-        height: 56px;
+        height: 49px;
         position: absolute;
         right: 0;
         bottom: 0;
         button {
-            width: 56px;
+            width: 49px;
             height: 100%;
             border: none;
             background-color: transparent;
@@ -95,7 +95,7 @@ page-video-player {
             display: flex;
             justify-content: center;
             color: color($colors, secondary);
-            font-size: 25px;
+            font-size: 23px;
             text-align: center;
         }
         button.activated {
@@ -125,14 +125,14 @@ page-video-player {
         .cp-round:before {
             border-radius: 50%;
             content: " ";
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             display: inline-block;
             box-sizing: border-box;
-            border-top: solid 4px rgba(255, 255, 255, 0.5);
-            border-right: solid 4px rgba(255, 255, 255, 0.5);
-            border-bottom: solid 4px rgba(255, 255, 255, 0.5);
-            border-left: solid 4px rgba(255, 255, 255, 0.5);
+            border-top: solid 3px rgba(255, 255, 255, 0.5);
+            border-right: solid 3px rgba(255, 255, 255, 0.5);
+            border-bottom: solid 3px rgba(255, 255, 255, 0.5);
+            border-left: solid 3px rgba(255, 255, 255, 0.5);
             position: absolute;
             top: 0;
             left: 0;
@@ -141,14 +141,14 @@ page-video-player {
         .cp-round:after {
             border-radius: 50%;
             content: " ";
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             display: inline-block;
             box-sizing: border-box;
-            border-top: solid 4px color($colors, secondary);;
-            border-right: solid 4px transparent;
-            border-bottom: solid 4px transparent;
-            border-left: solid 4px transparent;
+            border-top: solid 3px color($colors, secondary);;
+            border-right: solid 3px transparent;
+            border-bottom: solid 3px transparent;
+            border-left: solid 3px transparent;
             position: absolute;
             top: 0;
             left: 0;

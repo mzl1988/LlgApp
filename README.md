@@ -1,15 +1,19 @@
-## 电台
+# 可预览android版本apk
+[点击下载apk](https://github.com/mzl1988/LlgApp/blob/master/other/Llg.apk)
+[点击下载兼容版本apk](https://github.com/mzl1988/LlgApp/blob/master/other/Llg-crosswalk.apk)
+
+# 电台
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie1.jpg" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie2.jpg" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie3.jpg" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/movie4.png" width="30%">
 
-## 电台
+# 电台
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio1.png" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio2.png" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio3.jpg" width="30%">
 
-## video 组件
+# video 组件
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/video1.jpg" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/video2.png" width="30%">
 
@@ -56,6 +60,9 @@ Ionic App支持主题风格。要改变主题，只需要调整src/theme/variabl
 
 安装cordova插件的时候用ionic cordova plugin add ...的方式添加，这样会在package.json中添加这个插件的条目，如果有人clone了你的项目想在本地运行，可以用ionic state restore它会根据cordovaPlugins条目安装对应的插件。如果直接用cordova plugin add 安装则不会更新package.json。
 删除用 ionic cordova plugin remove
+
+## 兼容android4.0
+* cordova-plugin-crosswalk-webview
 
 ## platform 平台
 
@@ -112,22 +119,29 @@ $ adb devices
 
 # 命令行工具自动修改应用图标及添加启动画面
 1. 在项目的根目录下创建resources文件夹。
-2. 在文件夹中都放入icon.png（应用图标，最小192x192px，不带圆角），splash.png（启动屏幕，最小2208x2208px，中间区域1200x1200px）(可以是
+2. 在文件夹中都放入icon.png（应用图标，最小1024×1024px，不带圆角），splash.png（启动屏幕，最小2732×2732px，中间区域1200x1200px）(可以是
     png、psd、ai)
 3. 在cmd中进入项目所在文件夹执行：ionic cordova resources .执行该命令后，会自动在resources文件夹下创建已添加的平台名称的文件夹，如：android，其
     中会自动将图片进行缩放、裁剪，生成不同分辨率的图片，并在config.xml中添加相应内容。
 
     也可分开执行：
-    * ionic cordova resources --icon
-    * ionic cordova resources --splash
+    * ionic cordova resources --icon， -i 生成图标资源
+    * ionic cordova resources --splash， -s 生成启动画面资源
+    * ionic cordova resources --force， -f 强制资源再生
+4. 要禁用此功能并始终覆盖生成的图像，请使用--force
 
 ## 极光推送
 * https://github.com/jpush/jpush-phonegap-plugin
 * cordova plugin add jpush-phonegap-plugin --variable APP_KEY=your_jpush_appkey
 
 ## Ionic2/3 热更新
-1. http://ionicframework.com/docs/native/code-push/
+* http://ionicframework.com/docs/native/code-push/
 
-
-
-# LlgApp
+# 生命周期
+* ionViewLoaded 页面加载完毕触发。该事件发生在页面被创建成 DOM 的时候，且仅仅执行一次。如果页面被缓存（Ionic默认是缓存的）就不会再次触发该事件。该事件中可以放置初始化页面的一些事件。
+* ionViewWillEnter 即将进入一个页面变成当前激活页面的时候执行的事件。
+* ionViewDidEnter 进入了一个页面且变成了当前的激活页面，该事件不管是第一次进入还是缓存后进入都将执行。
+* ionViewWillLeave 将要离开了该页面之后变成了不是当前激活页面的时候执行的事件。
+* ionViewDidLeave 在页面完成了离开该页面并变成了不是当前激活页面的时候执行的事件。
+* ionViewWillUnload 在页面销毁和页面中有元素移除之前执行的事件。
+* ionViewDidUnload 在页面销毁和页面中有元素移除之后执行的事件。

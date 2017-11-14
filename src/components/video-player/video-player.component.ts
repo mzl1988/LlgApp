@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { NativeService } from '../../providers/NativeService';
@@ -10,7 +10,7 @@ declare let enableInlineVideo: any;
     selector: 'page-video-player',
     templateUrl: './video-player.component.html'
 })
-export class VideoPlayerComponent implements OnChanges {
+export class VideoPlayerComponent implements OnChanges, OnDestroy {
     @Input() videoConfig: any;
     player: any;
     isPlay = false;
@@ -41,13 +41,21 @@ export class VideoPlayerComponent implements OnChanges {
         }, 200);
     }
 
+    ngOnDestroy() {
+        if (this.player) {
+            this.player.pause();
+            this.player.src = '';
+            this.player.load();
+        }
+    }
+
     initVideo() {
         if (this.nativeService.isIos()) {
             enableInlineVideo(document.getElementById(this.videoConfig.id).getElementsByClassName('video-current')[0]);
         }
         this.player = document.getElementById(this.videoConfig.id).getElementsByClassName('video-current')[0];
         this.touch_end = setTimeout(() => {
-            $(`#${this.videoConfig.id} .video-player-controller`).animate({ bottom: '-50px' });
+            $(`#${this.videoConfig.id} .video-player-controller`).animate({ bottom: '-44px' });
         }, 4000);
         this.addVideoListeners();
         if (this.videoConfig.autoplay) {
@@ -157,8 +165,8 @@ export class VideoPlayerComponent implements OnChanges {
     }
     touchEnd() {
         this.touch_end = setTimeout(() => {
-            $(`#${this.videoConfig.id} .video-player-controller`).animate({ bottom: '-50px' });
-        }, 2000);
+            $(`#${this.videoConfig.id} .video-player-controller`).animate({ bottom: '-44px' });
+        }, 5000);
     }
 
     toPlay() {
@@ -193,10 +201,6 @@ export class VideoPlayerComponent implements OnChanges {
             this.fulled = true;
             if (this.nativeService.isMobile()) {
                 this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-                setTimeout(() => {
-                    this.statusBar.show();
-                    this.statusBar.overlaysWebView(true);
-                }, 200);
             }
             $(`${this.videoConfig.page} #${this.videoConfig.id}`).animate({
                 'z-index': 100000,
@@ -212,10 +216,6 @@ export class VideoPlayerComponent implements OnChanges {
             this.fulled = false;
             if (this.nativeService.isMobile()) {
                 this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-                setTimeout(() => {
-                    this.statusBar.show();
-                    this.statusBar.overlaysWebView(true);
-                }, 200);
             }
             setTimeout(() => {
                 let scroll = $(`${this.videoConfig.page} .scroll-content`)[0];

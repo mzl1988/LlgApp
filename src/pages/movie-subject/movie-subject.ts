@@ -33,8 +33,8 @@ export class MovieSubjectPage {
             page: 'page-movie-subject',
             id: `player_${this.id}`,
             autoplay: true,
-            poster: 'http://www.mediaelementjs.com/images/big_buck_bunny.jpg',
-            src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4'
+            poster: 'https://img3.doubanio.com/img/trailer/medium/2493838601.jpg',
+            src: 'https://vt1.doubanio.com/201711141605/9d439465359e52e5a53558fdb7fbe020/view/movie/M/302230170.mp4'
         };
         $('page-movie-subject ion-header').eq(0).css({ 'background-color': `rgba(66, 189, 86, ${this.rgba})` });
         this.movieMarginTop = this.nativeService.isIos() ? $('page-movie-subject ion-header').height() + 20 : $('page-movie-subject ion-header').height() + 25;

@@ -144,4 +144,14 @@ page-film {
             }
         }
     }
+
+    .ad-img {
+        padding: 15px;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 60px;
+        }
+    }
 }
