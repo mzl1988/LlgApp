@@ -3,7 +3,7 @@
     <name>LLG</name>
     <description>LLG个人</description>
     <author email="634390243@qq.com" href="https://mzl1988.github.io/">LLG个人</author>
-    <content src="index.html" />
+    <content original-src="index.html"/>
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -32,12 +32,6 @@
     </feature>
     <platform name="android">
         <allow-intent href="market:*" />
-        <config-file parent="UIStatusBarHidden" platform="android">
-            <true />
-        </config-file>
-        <config-file parent="UIViewControllerBasedStatusBarAppearance" platform="android">
-            <false />
-        </config-file>
         <preference name="CodePushDeploymentKey" value="YOUR-ANDROID-DEPLOYMENT-KEY" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
