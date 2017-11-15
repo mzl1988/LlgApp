@@ -47,6 +47,7 @@ Ionic 2 专注于以标准的 HTML 、 CSS 和 JavaScript 来构建移动站点�
 ## 在浏览器中运行
 * npm config set sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
 * npm install
+* cp ./src/providers/_Constants.ts ./src/providers/Constants.ts
 * ionic serve 或 ionic serve --address 192.168.10.113 --port 6228 --livereload-port 35600 --dev-logger-port 53600
 
 ## Navigation
@@ -137,6 +138,7 @@ $ adb devices
 
 ## Ionic2/3 热更新
 * http://ionicframework.com/docs/native/code-push/
+* https://www.youtube.com/watch?v=866PN-ccfm4
 
 # 生命周期
 * ionViewLoaded 页面加载完毕触发。该事件发生在页面被创建成 DOM 的时候，且仅仅执行一次。如果页面被缓存（Ionic默认是缓存的）就不会再次触发该事件。该事件中可以放置初始化页面的一些事件。

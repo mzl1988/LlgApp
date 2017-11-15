@@ -35,3 +35,4 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 
 package-lock.json
+/src/providers/Constants.ts

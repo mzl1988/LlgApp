@@ -11,6 +11,7 @@ import { CODE_PUSH_DEPLOYMENT_KEY, ENV } from './Constants';
 export class NativeService {
     appDetail: any;
     messageText: string;
+    progressStatus: string;
 
     constructor(
         private platform: Platform,
@@ -106,8 +107,10 @@ export class NativeService {
         if (this.isIos() && String(ENV) === 'prod') {
             deploymentKey = CODE_PUSH_DEPLOYMENT_KEY.ios.Production;
         }
-        this.codePush.sync({
-            deploymentKey: deploymentKey
+        this.codePush.sync({ deploymentKey: deploymentKey }, (progress) => {
+            this.ngZone.run(() => {
+                this.progressStatus = JSON.stringify(progress);
+            });
         }).subscribe((syncStatus) => {
 
             if (syncStatus === SyncStatus.UP_TO_DATE) {
