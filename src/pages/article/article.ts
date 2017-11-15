@@ -23,7 +23,6 @@ export class ArticlePage {
     }
 
     ionViewDidLoad() {
-        console.log(this.article);
         for (let index = 0; index < this.article.content.items.length; index++) {
             let item = this.article.content.items[index];
             if (index === 0 || item.type === 'segment') {
@@ -42,13 +41,16 @@ export class ArticlePage {
                     continue;
                 }
 
+                if (item.data.indexOf('来源：') > -1 && item.data.indexOf('微信号：') > -1) {
+                    continue;
+                }
+
                 this.contentHtml = this.contentHtml + `<p>${item.data}</p>`;
 
             } else if (item.type === 'image') {
                 this.contentHtml = this.contentHtml + `<img src="${item.data.original.src}">`;
             }
         }
-        console.log(this.contentHtml);
     }
 
 }
