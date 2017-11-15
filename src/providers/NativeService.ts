@@ -11,7 +11,7 @@ import { CODE_PUSH_DEPLOYMENT_KEY, ENV } from './Constants';
 export class NativeService {
     appDetail: any;
     messageText: string;
-    progressStatus: string;
+    // progressStatus: string;
 
     constructor(
         private platform: Platform,
@@ -109,7 +109,7 @@ export class NativeService {
         }
         this.codePush.sync({ deploymentKey: deploymentKey }, (progress) => {
             this.ngZone.run(() => {
-                this.progressStatus = JSON.stringify(progress);
+                // this.progressStatus = JSON.stringify(progress);
             });
         }).subscribe((syncStatus) => {
 

@@ -1,0 +1,88 @@
+page-article {
+    .content_wrapper {
+        padding: 0 17px 10px;
+    }
+    .landingHead {
+        padding: .13rem 0;
+    }
+
+    .landingHead h1 {
+        color: #000;
+        line-height: 1.4;
+        font-weight: 400;
+        font-size: 24px;
+        margin-top: 1rem;
+    }
+
+    .landingHead section {
+        display: flex;
+        box-align: center;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .landingHead section h3 {
+        box-orient: horizontal;
+        flex: 1;
+        display: flex;
+        box-align: center;
+        align-items: center;
+    }
+
+    .landingHead .avatarLink {
+        position: relative;
+        margin: 0 14px 0 0;
+    }
+
+    .landingHead .avatarLink img {
+        display: block;
+        height: 2.6rem;
+        width: 2.6rem;
+        background-size: cover;
+        border-radius: 50%;
+    }
+
+    .landingHead .extraInfo {
+        font-size: .16rem;
+    }
+
+    .landingHead .authorName {
+        height: 1.8rem;
+        color: #333;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1.8rem;
+        user-select: none;
+        display: block;
+        padding: 0 0 .02rem;
+        text-decoration: none;
+    }
+
+    .landingHead .infoSet {
+        display: block;
+        height: 100%;
+        color: #999;
+        font-weight: 400;
+        font-size: 1.2rem;
+    }
+
+    .landingHead .infoSet .afrSplit {
+        position: relative;
+        padding-right: 8px;
+    }
+
+    .landingHead .infoSet {
+        display: block;
+        height: 100%;
+        color: #999;
+        font-weight: 400;
+        font-size: 1.2rem;
+    }
+
+    p {
+        color: rgb(62, 62, 62);
+        font-size: 16px; 
+        line-height: 1.6;
+    }
+}

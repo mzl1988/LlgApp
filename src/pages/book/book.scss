@@ -1,0 +1,19 @@
+page-book {
+    ion-thumbnail img {
+        width: 100px !important;
+        height: 65px !important;
+    }
+
+    .item-ios h2 {
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    button.item-ios:not([detail-none]) .item-inner {
+        background-image: inherit;
+        padding-right: 0;
+    }
+}

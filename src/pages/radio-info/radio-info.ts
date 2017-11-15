@@ -29,8 +29,8 @@ export class RadioInfoPage {
     constructor(
         private testService: TestService,
         private nativeService: NativeService,
-        private appCtrl: App,
         private navCtrl: NavController,
+        private appCtrl: App,
         navParams: NavParams
     ) {
         this.id = navParams.data.id;

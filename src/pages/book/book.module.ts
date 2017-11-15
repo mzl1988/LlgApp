@@ -2,19 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicPageModule } from 'ionic-angular';
-import { MusicPage } from './music';
+import { BookPage } from './book';
 
 @NgModule({
     declarations: [
-        MusicPage
+        BookPage
     ],
     imports: [
         CommonModule,
         FormsModule,
-        IonicPageModule.forChild(MusicPage),
+        IonicPageModule.forChild(BookPage),
     ],
     entryComponents: [
-        MusicPage
+        BookPage
     ]
 })
-export class MusicModule { }
+export class BookModule { }

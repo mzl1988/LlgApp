@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar color="secondary">
+        <ion-title>
+            阅读
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen class="outer-content">
+    <ion-list>
+        <button ion-item *ngFor="let article of articles" tappable (click)="toArticle(article.id)">
+            <ion-thumbnail item-start *ngIf="article?.imgSrc.length > 0">
+                <img [src]="article.imgSrc[0]">
+            </ion-thumbnail>
+            <h2>{{ article.title }}</h2>
+            <p>
+                <span class="margin-right-8">{{ article.readAmount }} <ion-icon name="eye"></ion-icon></span>
+                <span class="margin-right-8">{{ article.commentAmount }} <ion-icon name="chatbubbles"></ion-icon></span>
+                <span>{{ article.updatedAt }}</span>
+            </p>
+        </button>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

@@ -1,3 +1,6 @@
+# 注意
+* demo 仅用于学习。里面用了第三方 api 请不要进行商业使用，后果自负！
+
 # 可预览android版本apk
 [点击下载apk](https://github.com/mzl1988/LlgApp/raw/master/other/Llg.apk)
 
@@ -13,6 +16,10 @@
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio1.png" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio2.png" width="30%">
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/radio3.jpg" width="30%">
+
+# 阅读
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/book1.png" width="30%">
+<img src="https://github.com/mzl1988/LlgApp/blob/master/other/book2.png" width="30%">
 
 # video 组件
 <img src="https://github.com/mzl1988/LlgApp/blob/master/other/video1.jpg" width="30%">
@@ -78,7 +85,7 @@ Ionic App支持主题风格。要改变主题，只需要调整src/theme/variabl
 
 emulate命令将App部署到特定的平台设备上。你也可以通过在特定的模拟器上添加--livereload选项运行live reload。live reload功能类似ionic serve，但是不是使用标准的浏览器来开发和调试，编译后的hybrid应用本身会监控任何文件改变并在需要的时候重新载入App。这降低了针对小改动需要频繁重新编译App的需求。然而任何插件的改变将导致完全的重新编译。为使live reload能够正常工作，开发机和模拟器必须在一个相同的本地网络中，并且设备必须支持web sockets。
 
-* ionic cordova emulate android
+* ionic cordova emulate android --address 192.168.10.113
 * ionic cordova emulate android --livereload --address 192.168.10.113 --port 6228 --livereload-port 35700 --dev-logger-port 53700
 
 ## run 在连接的设备上运行Ionic项目

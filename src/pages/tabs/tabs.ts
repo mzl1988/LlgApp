@@ -31,9 +31,9 @@ export class TabsPage {
                 tabIcon: 'radio'
             },
             {
-                root: 'MusicPage',
-                tabTitle: '音乐',
-                tabIcon: 'musical-notes'
+                root: 'BookPage',
+                tabTitle: '阅读',
+                tabIcon: 'book'
             },
             {
                 root: 'MinePage',

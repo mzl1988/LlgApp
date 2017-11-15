@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar color="secondary">
+        <ion-title>
+            政商内参
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <div class="content_wrapper">
+        <header class="landingHead">
+            <h1 class="titleFont">{{ article?.title}}</h1>
+            <section>
+                <h3>
+                    <div class="avatarLink">
+                        <img src="https://timg01.bdimg.com/timg?pacompress&amp;imgtype=0&amp;sec=1439619614&amp;di=913392957a53fa338ce9a934ef8605e0&amp;quality=90&amp;size=b105_105&amp;src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F36e2823b12db465bfd27ecfdc772c446.jpeg">
+                    </div>
+                    <div class="extraInfo">
+                        <div class="authorName">政商内参</div>
+                        <div class="infoSet">
+                            <span class="afrSplit">百家号</span>
+                            <span>{{ article?.updatedAt}}</span>
+                        </div>
+                    </div>
+                </h3>
+            </section>
+        </header>
+        <div [innerHTML]="contentHtml"></div>
+    </div>
+</ion-content>
