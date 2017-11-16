@@ -30,12 +30,10 @@ export class MyApp {
         private events: Events,
         screenOrientation: ScreenOrientation
     ) {
-        // statusBar.overlaysWebView 在 platform.ready 后执行经常不生效提前执行一次吧
-        statusBar.overlaysWebView(true);
         platform.ready().then(() => {
             splashScreen.hide();
-            statusBar.overlaysWebView(true);
-            statusBar.backgroundColorByHexString('#00ffffff');
+            statusBar.overlaysWebView(true); // android7 经常不生效
+            statusBar.backgroundColorByHexString('#00FFFFFF');
             if (this.nativeService.isMobile()) {
                 screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
             }

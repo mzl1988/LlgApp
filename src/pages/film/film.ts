@@ -56,6 +56,7 @@ export class FilmPage {
 
     onCancel() {
         this.onFocusInput = false;
+        this.searchText = '';
         let tabBarElement: any = document.querySelector('#myTabs .tabbar.show-tabbar');
         tabBarElement.style.opacity = 1;
     }
