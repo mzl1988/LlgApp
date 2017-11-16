@@ -149,14 +149,18 @@ $ adb devices
 
 ## statusBar.overlaysWebView(true); android 经常不生效
 在MainActivity.java(platforms/android/src/../../MainActivity.java)中导入依赖包:
+```java
 import android.os.Build;
 import android.view.View;
+```
 在MainActivity.java中的super.onCreate() 函数后添加如下代码:
+```java
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
    getWindow().getDecorView().setSystemUiVisibility(
        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
        View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 }
+```
 
 
 # 生命周期
