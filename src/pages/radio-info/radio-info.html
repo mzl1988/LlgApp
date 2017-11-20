@@ -10,7 +10,7 @@
     <ion-list class="margin-bottom-0 radio-info">
         <ion-item>
             <ion-thumbnail item-start style="margin: 10px 16px 10px 0">
-                <img [src]="detail?.pic" class="radio-pic">
+                <img *ngIf="detail?.pic" [src]="detail?.pic" class="radio-pic">
             </ion-thumbnail>
             <h2>{{ detail?.name}}</h2>
             <p>上传者：{{ detail?.uploadUserName}}</p>

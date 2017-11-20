@@ -23,7 +23,6 @@ export class RadioInfoPage {
     detail: any;
     audios: any[] = [];
     loading = false;
-    canLoading = true;
     marginTop: number;
 
     constructor(
@@ -40,7 +39,7 @@ export class RadioInfoPage {
         $('page-radio-info ion-list').show();
     }
 
-    ionViewWillLeave () {
+    ionViewWillLeave() {
         $('page-radio-info ion-list').hide();
     }
 
@@ -76,7 +75,7 @@ export class RadioInfoPage {
     }
 
     getAudioList(infiniteScroll) {
-        if (this.loading || !this.canLoading) {
+        if (this.loading) {
             return;
         }
         this.loading = true;
@@ -91,7 +90,9 @@ export class RadioInfoPage {
                 if (res.code === '10000') {
                     this.pagenum = res.result.nextPage;
                     this.count = res.result.count;
-                    this.pagenum === this.count ? this.canLoading = false : this.canLoading = true;
+                    if (res.result.haveNext === 0 && infiniteScroll) {
+                        infiniteScroll.enable(false);
+                    }
                     this.audios = this.audios.concat(res.result.dataList);
                     this.nativeService.setStorage('audios', this.audios);
                 }
